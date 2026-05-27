@@ -16,8 +16,6 @@ button{font-family:inherit}
 @keyframes tickerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .3s ease;padding:0 6%}
 nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-shadow:0 1px 20px rgba(0,0,0,.08)}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
@@ -32,8 +30,6 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .mob-menu{display:none;background:#fff;padding:16px 6%;box-shadow:0 8px 24px rgba(0,0,0,.08);border-top:1px solid #f0f0f0}
 .mob-menu button{display:block;background:none;border:none;font-size:15px;font-weight:500;color:#333;cursor:pointer;padding:10px 0;width:100%;text-align:left}
 .mob-menu .btn-full{background:#111;color:#fff;border:none;padding:11px 22px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;width:100%;text-align:center}
-
-/* HERO */
 #home{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#fff 60%,#f0f5ff 100%);padding:100px 6% 60px}
 .hero-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;width:100%}
 .hero-text{flex:1 1 420px;animation:fadeUp .8s ease forwards}
@@ -49,7 +45,8 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .hero-visual{flex:1 1 340px;position:relative;animation:fadeIn 1s ease .3s both}
 .browser-card{background:#fff;border-radius:20px;box-shadow:0 24px 80px rgba(37,99,235,.12),0 8px 32px rgba(0,0,0,.08);overflow:hidden;border:1px solid #f0f0f0}
 .browser-bar{background:#f8f9fa;padding:12px 16px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #f0f0f0}
-.dot{width:12px;height:12px;border-radius:50%}
+.dot{width:12px;height:12px;border-radius:50%;cursor:pointer;transition:opacity .2s}
+.dot:hover{opacity:.7}
 .url-bar{flex:1;background:#e9ecef;border-radius:4px;height:22px;margin:0 8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#888}
 .browser-card img{width:100%;display:block;height:220px;object-fit:cover}
 .browser-stats{padding:20px}
@@ -64,21 +61,15 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .badge-launch span{font-size:20px}
 .badge-launch-lbl{font-size:12px;color:#999}
 .badge-launch-val{font-weight:700;font-size:14px}
-
-/* TICKER */
 .ticker-wrap{background:#0a0a0a;padding:14px 0;overflow:hidden;white-space:nowrap}
 .ticker-track{display:inline-flex;animation:tickerMove 30s linear infinite}
 .ticker-track:hover{animation-play-state:paused}
 .ticker-item{color:#888;font-size:13px;font-weight:500;padding:0 32px;display:flex;align-items:center;gap:10px}
 .ticker-item span{color:#2563EB}
-
-/* SECTIONS COMMON */
 .section-tag{color:#2563EB;font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
 .section-title{font-family:'Poppins',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:#0a0a0a;margin-bottom:16px}
 .section-sub{color:#666;font-size:16px;max-width:500px;margin:0 auto}
 .section-center{text-align:center;margin-bottom:60px}
-
-/* SERVICES */
 #services{padding:100px 6%;background:#f8faff}
 .services-grid{max-width:1200px;margin:0 auto}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
@@ -90,8 +81,6 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .service-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px;color:#0a0a0a;position:relative;z-index:1}
 .service-card p{color:#666;font-size:14px;line-height:1.7;position:relative;z-index:1}
 .service-tag{margin-top:16px;font-size:12px;font-weight:600;color:#2563EB;background:#EFF6FF;display:inline-block;padding:4px 10px;border-radius:20px;position:relative;z-index:1}
-
-/* PROCESS */
 #process{padding:100px 6%;background:#fff}
 .process-inner{max-width:1100px;margin:0 auto}
 .process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:40px;position:relative}
@@ -99,20 +88,15 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .process-step{text-align:center;padding:0 16px;position:relative;z-index:1}
 .step-circle{width:72px;height:72px;background:#fff;border:3px solid #2563EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 20px;box-shadow:0 4px 20px rgba(37,99,235,.15);transition:all .3s}
 .process-step:hover .step-circle{background:#2563EB;transform:scale(1.1)}
-.process-step:hover .step-circle span{filter:brightness(10)}
 .step-num-badge{position:absolute;top:-8px;right:calc(50% - 44px);background:#2563EB;color:#fff;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .process-step h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin-bottom:8px;color:#111}
 .process-step p{font-size:13px;color:#777;line-height:1.6}
-
-/* ABOUT */
 #about{padding:100px 6%;background:#f8faff}
 .about-inner{max-width:1100px;margin:0 auto}
 .about-text p{color:#555;font-size:16px;line-height:1.8;margin-bottom:20px}
 .about-steps{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
 .step-badge{display:flex;align-items:center;gap:6px;background:#EFF6FF;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;color:#2563EB}
 .step-num{background:#2563EB;color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px}
-
-/* PRICING */
 #pricing{padding:100px 6%;background:#fff}
 .pricing-inner{max-width:1100px;margin:0 auto}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
@@ -133,22 +117,18 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .btn-plan{width:100%;padding:14px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;border:2px solid #111;background:transparent;color:#111}
 .btn-plan:hover,.pricing-card.popular .btn-plan{background:#111;color:#fff}
 .pricing-card.popular .btn-plan:hover{background:#2563EB;border-color:#2563EB}
-
-/* TESTIMONIALS */
-#testimonials{padding:100px 6%;background:#f8faff}
-.test-inner{max-width:1200px;margin:0 auto}
-.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.test-card{background:#fff;border-radius:16px;padding:32px 28px;border:1px solid #e8f0fe;transition:all .3s}
-.test-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(37,99,235,.08)}
-.test-quote{color:#2563EB;font-size:28px;margin-bottom:16px}
-.test-card p{color:#444;font-size:15px;line-height:1.8;margin-bottom:24px}
-.test-author{display:flex;align-items:center;gap:12px}
-.test-author img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #dbeafe}
-.test-name{font-weight:700;font-size:14px;color:#111}
-.test-company{font-size:12px;color:#888}
-.test-stars{margin-left:auto;color:#fbbf24;font-size:14px}
-
-/* FAQ */
+#reviews{padding:100px 6%;background:#f8faff}
+.reviews-inner{max-width:1200px;margin:0 auto}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.review-card{background:#fff;border-radius:16px;padding:32px 28px;border:1px solid #e8f0fe;transition:all .3s}
+.review-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(37,99,235,.08)}
+.review-quote{color:#2563EB;font-size:28px;margin-bottom:16px}
+.review-card p{color:#444;font-size:15px;line-height:1.8;margin-bottom:24px}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #dbeafe;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.review-name{font-weight:700;font-size:14px;color:#111}
+.review-company{font-size:12px;color:#888}
+.review-stars{margin-left:auto;color:#fbbf24;font-size:14px}
 #faq{padding:100px 6%;background:#fff}
 .faq-inner{max-width:760px;margin:0 auto}
 .faq-list{margin-top:40px}
@@ -160,8 +140,6 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
 .faq-item.open .faq-a{max-height:300px}
 .faq-a-inner{padding:0 24px 20px;color:#666;font-size:14px;line-height:1.8}
-
-/* CONTACT */
 #contact{padding:100px 6%;background:#f8faff}
 .contact-inner{max-width:1100px;margin:0 auto}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:start}
@@ -171,35 +149,29 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .contact-icon{width:44px;height:44px;background:#EFF6FF;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
 .contact-item span{color:#444;font-size:14px;font-weight:500}
 .social-row{display:flex;gap:10px;margin-top:28px}
-.social-btn{width:40px;height:40px;background:#111;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;cursor:pointer;transition:background .2s}
+.social-btn{width:40px;height:40px;background:#111;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;cursor:pointer;transition:background .2s;text-decoration:none}
 .social-btn:hover{background:#2563EB}
 .contact-form{background:#fff;border-radius:20px;padding:36px;box-shadow:0 8px 40px rgba(0,0,0,.07);border:1px solid #f0f0f0}
-.success-msg{background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:12px 16px;margin-bottom:20px;color:#15803d;font-weight:600;font-size:14px;display:none}
-.success-msg.show{display:block}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-group{margin-bottom:18px}
 .form-group label{display:block;font-weight:600;font-size:13px;color:#333;margin-bottom:6px}
 .form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid #e8e8e8;font-size:14px;color:#333;outline:none;transition:border .2s;font-family:inherit;background:#fff}
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#2563EB}
 .form-group textarea{resize:vertical}
-.btn-send{width:100%;background:#111;color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s}
-.btn-send:hover{background:#2563EB}
+.btn-send{width:100%;background:#25D366;color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-send:hover{background:#1da851}
 .map-wrap{margin-top:48px;border-radius:16px;overflow:hidden;border:1px solid #e8e8e8;height:260px}
 .map-wrap iframe{width:100%;height:260px;border:0;display:block}
-
-/* BACK TO TOP */
 #backTop{position:fixed;bottom:96px;right:28px;z-index:998;width:44px;height:44px;background:#111;color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:background .2s,transform .2s}
 #backTop:hover{background:#2563EB;transform:translateY(-2px)}
 #backTop.show{display:flex}
-
-/* FOOTER */
 footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
 .footer-inner{max-width:1200px;margin:0 auto}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:48px}
 .footer-brand .logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;margin-bottom:14px}
 .footer-brand p{color:#888;font-size:14px;line-height:1.7;margin-bottom:20px;max-width:240px}
 .footer-social{display:flex;gap:8px}
-.footer-social .s-btn{width:36px;height:36px;background:#1e1e1e;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;cursor:pointer;transition:all .2s}
+.footer-social .s-btn{width:36px;height:36px;background:#1e1e1e;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none}
 .footer-social .s-btn:hover{background:#2563EB;color:#fff}
 .footer-col h4{font-weight:700;font-size:15px;margin-bottom:18px;color:#fff}
 .footer-col a{display:block;color:#888;font-size:14px;margin-bottom:10px;cursor:pointer;transition:color .2s;text-decoration:none}
@@ -211,11 +183,10 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
 .newsletter-input button:hover{background:#1d4ed8}
 .footer-bottom{border-top:1px solid #1e1e1e;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .footer-bottom span{color:#666;font-size:13px}
-
-/* TOAST */
+.footer-bottom a{color:#666;font-size:13px;text-decoration:none;cursor:pointer}
+.footer-bottom a:hover{color:#fff}
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:#111;color:#fff;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;z-index:9999;transition:transform .4s ease,opacity .4s;opacity:0;pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-
 @media(max-width:768px){
   .desk-nav{display:none!important}
   .mob-btn{display:block!important}
@@ -226,35 +197,33 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
-    <div class="logo" onclick="scrollTo('home')"><span class="blue">Nex</span>igen<span class="gray">Studios</span></div>
+    <div class="logo" onclick="goTo('home')"><span class="blue">Nex</span>igen<span class="gray">Studios</span></div>
     <div class="desk-nav">
-      <button onclick="scrollTo('home')">Home</button>
-      <button onclick="scrollTo('services')">Services</button>
-      <button onclick="scrollTo('process')">Process</button>
-      <button onclick="scrollTo('pricing')">Pricing</button>
-      <button onclick="scrollTo('about')">About</button>
-      <button onclick="scrollTo('faq')">FAQ</button>
-      <button onclick="scrollTo('contact')">Contact</button>
-      <button class="btn-cta" onclick="scrollTo('contact')">Get Started</button>
+      <button onclick="goTo('home')">Home</button>
+      <button onclick="goTo('services')">Services</button>
+      <button onclick="goTo('process')">Process</button>
+      <button onclick="goTo('pricing')">Pricing</button>
+      <button onclick="goTo('about')">About</button>
+      <button onclick="goTo('faq')">FAQ</button>
+      <button onclick="goTo('contact')">Contact</button>
+      <button class="btn-cta" onclick="openWA('I\'d like to start a project with Nexigen Studios!')">Get Started</button>
     </div>
     <button class="mob-btn" onclick="toggleMenu()">☰</button>
   </div>
   <div class="mob-menu" id="mobMenu">
-    <button onclick="scrollTo('home')">Home</button>
-    <button onclick="scrollTo('services')">Services</button>
-    <button onclick="scrollTo('process')">Process</button>
-    <button onclick="scrollTo('pricing')">Pricing</button>
-    <button onclick="scrollTo('about')">About</button>
-    <button onclick="scrollTo('faq')">FAQ</button>
-    <button onclick="scrollTo('contact')">Contact</button>
-    <button class="btn-full" onclick="scrollTo('contact')">Get Started</button>
+    <button onclick="goTo('home')">Home</button>
+    <button onclick="goTo('services')">Services</button>
+    <button onclick="goTo('process')">Process</button>
+    <button onclick="goTo('pricing')">Pricing</button>
+    <button onclick="goTo('about')">About</button>
+    <button onclick="goTo('faq')">FAQ</button>
+    <button onclick="goTo('contact')">Contact</button>
+    <button class="btn-full" onclick="openWA('I\'d like to start a project with Nexigen Studios!')">Get Started</button>
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="home">
   <div class="hero-inner">
     <div class="hero-text">
@@ -262,16 +231,16 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
       <h1>We Build Modern<br><span>Websites That Work.</span></h1>
       <p>Nexigen Studios helps businesses grow through beautifully crafted websites that deliver real results — fast, modern, and built to convert.</p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="scrollTo('contact')">Start a Project →</button>
-        <button class="btn-secondary" onclick="scrollTo('services')">Our Services</button>
+        <button class="btn-primary" onclick="openWA('Hi! I\'d like to start a project with Nexigen Studios.')">Start a Project →</button>
+        <button class="btn-secondary" onclick="goTo('services')">Our Services</button>
       </div>
     </div>
     <div class="hero-visual">
       <div class="browser-card">
         <div class="browser-bar">
-          <div class="dot" style="background:#ff5f57"></div>
-          <div class="dot" style="background:#febc2e"></div>
-          <div class="dot" style="background:#28c840"></div>
+          <div class="dot" style="background:#ff5f57" title="Close"></div>
+          <div class="dot" style="background:#febc2e" title="Minimise"></div>
+          <div class="dot" style="background:#28c840" title="Full screen"></div>
           <div class="url-bar">nexigenstudios.com</div>
         </div>
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85" alt="Dashboard"/>
@@ -290,12 +259,10 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track" id="tickerTrack"></div>
 </div>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="services-grid">
     <div class="fade-in section-center">
@@ -307,7 +274,6 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   </div>
 </section>
 
-<!-- PROCESS -->
 <section id="process">
   <div class="process-inner">
     <div class="fade-in section-center">
@@ -319,7 +285,6 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-inner" style="max-width:860px;margin:0 auto">
     <div class="about-text fade-in" style="text-align:center">
@@ -337,7 +302,6 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
   <div class="pricing-inner">
     <div class="fade-in section-center">
@@ -349,18 +313,16 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="test-inner">
+<section id="reviews">
+  <div class="reviews-inner">
     <div class="fade-in section-center">
-      <div class="section-tag">Testimonials</div>
+      <div class="section-tag">Reviews</div>
       <h2 class="section-title">What Our Clients Say</h2>
     </div>
-    <div class="test-grid" id="testimonialsGrid"></div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
   <div class="faq-inner">
     <div class="fade-in section-center">
@@ -371,7 +333,6 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <div class="fade-in section-center">
@@ -386,40 +347,42 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
         <div class="contact-item"><div class="contact-icon">📞</div><span>+91 89210 26848</span></div>
         <div class="contact-item"><div class="contact-icon">📍</div><span>Kollam, Kerala, India</span></div>
         <div class="social-row">
-          <div class="social-btn">𝕏</div>
-          <div class="social-btn">in</div>
-          <div class="social-btn">f</div>
-          <div class="social-btn">▶</div>
+          <a class="social-btn" href="https://twitter.com" target="_blank" rel="noopener" title="Twitter / X">𝕏</a>
+          <a class="social-btn" href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn">in</a>
+          <a class="social-btn" href="https://facebook.com" target="_blank" rel="noopener" title="Facebook">f</a>
+          <a class="social-btn" href="https://youtube.com" target="_blank" rel="noopener" title="YouTube">▶</a>
         </div>
       </div>
       <div class="contact-form fade-in" style="transition-delay:.15s">
-        <div class="success-msg" id="successMsg">✓ Message sent! We'll be in touch soon.</div>
         <div class="form-row">
-          <div class="form-group"><label>Full Name</label><input type="text" id="fname" placeholder="Your name"/></div>
-          <div class="form-group"><label>Email Address</label><input type="email" id="femail" placeholder="your@email.com"/></div>
+          <div class="form-group"><label>Full Name *</label><input type="text" id="fname" placeholder="Your name"/></div>
+          <div class="form-group"><label>Phone Number *</label><input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX"/></div>
         </div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="femail" placeholder="your@email.com"/></div>
         <div class="form-group"><label>Service Interested In</label>
           <select id="fservice">
             <option value="">Select a service...</option>
             <option>Business Website</option>
             <option>Landing Page</option>
-            <option>E-commerce Website</option>
             <option>Portfolio Website</option>
             <option>Website Redesign</option>
-            <option>Maintenance & Support</option>
+            <option>Maintenance &amp; Support</option>
           </select>
         </div>
         <div class="form-group"><label>Budget Range</label>
           <select id="fbudget">
             <option value="">Select a budget...</option>
-            <option>Under ₹3000</option>
-            <option>₹3,000 – ₹5,000</option>
-            <option>₹5,000 – ₹10,000</option>
-            <option>₹10,000+</option>
+            <option>Under ₹25,000</option>
+            <option>₹25,000 – ₹75,000</option>
+            <option>₹75,000 – ₹2,00,000</option>
+            <option>₹2,00,000+</option>
           </select>
         </div>
-        <div class="form-group"><label>Message</label><textarea id="fmsg" rows="4" placeholder="Tell us about your project..."></textarea></div>
-        <button class="btn-send" onclick="sendForm()">Send Message →</button>
+        <div class="form-group"><label>Message *</label><textarea id="fmsg" rows="4" placeholder="Tell us about your project..."></textarea></div>
+        <button class="btn-send" onclick="sendForm()">
+          <svg viewBox="0 0 32 32" width="20" height="20" fill="white"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.74.7 5.31 1.93 7.55L.5 31.5l8.18-1.91A15.45 15.45 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.3a13.72 13.72 0 01-7.01-1.92l-.5-.3-5.17 1.21 1.24-5.03-.33-.52A13.72 13.72 0 012.2 16C2.2 8.38 8.38 2.2 16 2.2S29.8 8.38 29.8 16 23.62 28.8 16 28.8zm7.52-10.27c-.41-.21-2.44-1.2-2.82-1.34-.38-.13-.65-.2-.93.21-.27.41-1.07 1.34-1.31 1.62-.24.27-.48.3-.9.1-.41-.21-1.74-.64-3.32-2.04-1.23-1.09-2.06-2.44-2.3-2.85-.24-.41-.03-.63.18-.84.19-.18.41-.48.62-.72.2-.24.27-.41.41-.69.14-.27.07-.51-.03-.72-.1-.21-.93-2.24-1.27-3.07-.34-.8-.68-.69-.93-.7h-.79c-.27 0-.72.1-1.1.51-.38.41-1.44 1.41-1.44 3.44s1.48 3.99 1.68 4.27c.21.27 2.9 4.43 7.03 6.21.98.42 1.75.67 2.34.86.98.31 1.88.27 2.58.16.79-.12 2.44-.99 2.78-1.96.34-.96.34-1.79.24-1.96-.1-.17-.37-.27-.79-.48z"/></svg>
+          Send via WhatsApp
+        </button>
       </div>
     </div>
     <div class="map-wrap fade-in">
@@ -428,7 +391,6 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
@@ -436,23 +398,25 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
         <div class="logo"><span class="blue">Nex</span>igen Studios</div>
         <p>Building websites that move businesses forward.</p>
         <div class="footer-social">
-          <div class="s-btn">𝕏</div><div class="s-btn">in</div><div class="s-btn">f</div><div class="s-btn">▶</div>
+          <a class="s-btn" href="https://twitter.com" target="_blank" rel="noopener">𝕏</a>
+          <a class="s-btn" href="https://linkedin.com" target="_blank" rel="noopener">in</a>
+          <a class="s-btn" href="https://facebook.com" target="_blank" rel="noopener">f</a>
+          <a class="s-btn" href="https://youtube.com" target="_blank" rel="noopener">▶</a>
         </div>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
-        <a onclick="scrollTo('home')">Home</a>
-        <a onclick="scrollTo('services')">Services</a>
-        <a onclick="scrollTo('pricing')">Pricing</a>
-        <a onclick="scrollTo('contact')">Contact</a>
+        <a onclick="goTo('home')">Home</a>
+        <a onclick="goTo('services')">Services</a>
+        <a onclick="goTo('pricing')">Pricing</a>
+        <a onclick="goTo('contact')">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
-        <a>Business Websites</a>
-        <a>Landing Pages</a>
-        <a>E-commerce</a>
-        <a>Website Redesign</a>
-        <a>Maintenance</a>
+        <a onclick="goTo('services')">Business Websites</a>
+        <a onclick="goTo('services')">Landing Pages</a>
+        <a onclick="goTo('services')">Website Redesign</a>
+        <a onclick="goTo('services')">Maintenance</a>
       </div>
       <div class="footer-col newsletter">
         <h4>Newsletter</h4>
@@ -465,54 +429,18 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
     </div>
     <div class="footer-bottom">
       <span>© 2026 Nexigen Studios. All rights reserved.</span>
-      <span>Privacy Policy · Terms of Service</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></span>
     </div>
   </div>
 </footer>
 
-<!-- BACK TO TOP -->
-<button id="backTop" onclick="scrollTo('home')" title="Back to top">↑</button>
+<button id="backTop" onclick="goTo('home')" title="Back to top">↑</button>
 <div class="toast" id="toast"></div>
 
 <script>
-const SERVICES=[
-  {icon:"🌐",title:"Business Websites",desc:"Professional, fast-loading websites that represent your brand and convert visitors into customers.",tag:"Most Popular"},
-  {icon:"📄",title:"Landing Pages",desc:"High-converting single pages designed to capture leads and drive targeted campaign results.",tag:""},
-  {icon:"🛒",title:"E-commerce Websites",desc:"Fully functional online stores built for performance, security, and maximum sales conversion.",tag:""},
-  {icon:"🎨",title:"Website Redesign",desc:"Transform your outdated site into a modern, polished experience that reflects your brand today.",tag:""},
-  {icon:"📈",title:"SEO Optimization",desc:"On-page SEO best practices baked into every website we build, so you rank from day one.",tag:""},
-  {icon:"🔧",title:"Maintenance & Support",desc:"Reliable ongoing support, updates, and monitoring so your website stays peak-ready always.",tag:""},
-];
-
-const PROCESS=[
-  {icon:"🔍",title:"Discovery",desc:"We learn about your business, goals, and audience to build a solid strategic foundation."},
-  {icon:"🎨",title:"Design",desc:"Wireframes and polished UI designs crafted for impact, clarity, and your brand identity."},
-  {icon:"⚙️",title:"Development",desc:"Clean, performant code built with modern technologies and mobile-first best practices."},
-  {icon:"🚀",title:"Launch & Support",desc:"Seamless deployment followed by testing, handover, and ongoing support."},
-];
-
-const PRICING=[
-  {name:"Starter",price:"4,999",desc:"Perfect for small businesses and personal brands.",features:["5-page website","Mobile responsive","Basic SEO setup","1 month support","Contact form","Google Analytics"],off:["Custom animations","E-commerce","Priority support"]},
-  {name:"Growth",price:"6,999",desc:"Ideal for growing businesses ready to scale.",features:["10-page website","Mobile responsive","Full SEO setup","3 months support","Custom animations","CMS integration","Performance optimization"],off:["E-commerce","Priority support"],popular:true},
-  {name:"Enterprise",price:"Custom",desc:"Full-scale solutions for ambitious brands.",features:["Unlimited pages","Mobile responsive","Advanced SEO","6 months support","Custom animations","E-commerce store","Priority support","Dedicated account manager"],off:[]},
-];
-
-const TESTIMONIALS=[
-  {name:"Sarah Mitchell",company:"Apex Ventures",img:"https://randomuser.me/api/portraits/women/44.jpg",review:"Nexigen Studios transformed our online presence completely. The team delivered beyond expectations — professional, responsive, and genuinely talented."},
-  {name:"James Okonkwo",company:"Lumina Retail",img:"https://randomuser.me/api/portraits/men/32.jpg",review:"Our enquiries doubled within weeks of launching the new site. Nexigen's attention to detail and design thinking is unmatched."},
-  {name:"Priya Nair",company:"MediCare Solutions",img:"https://randomuser.me/api/portraits/women/68.jpg",review:"Working with Nexigen felt like having an in-house team. They understood our vision instantly and executed it flawlessly."},
-];
-
-const FAQS=[
-  {q:"How long does a website project take?",a:"Most projects take between 2 to 6 weeks depending on complexity. A simple landing page can be ready in under 2 weeks, while a full e-commerce build may take 4–8 weeks. We always give you a clear timeline upfront."},
-  {q:"Do you work with clients outside Kerala?",a:"Absolutely! We work with clients across India and internationally. Most of our collaboration happens remotely via video calls, email, and shared project management tools."},
-  {q:"Will my website be mobile-friendly?",a:"Yes — every website we deliver is fully responsive and tested across all major devices and browsers. Mobile performance is always a top priority."},
-  {q:"Can I update the website myself after launch?",a:"Yes. We build on easy-to-use CMS platforms when needed, and we provide a handover walkthrough so you can manage content confidently without any coding knowledge."},
-  {q:"What happens after the website goes live?",a:"We offer post-launch support plans (1–6 months depending on your package) covering bug fixes, minor updates, and performance monitoring."},
-  {q:"Do you offer payment in instalments?",a:"Yes! We typically work with a 50% deposit to begin, and the remaining 50% on delivery. For larger projects we can arrange milestone-based payment schedules."},
-];
-
-function scrollTo(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"});document.getElementById("mobMenu").style.display="none";}
+const WA_NUM = "918921026848";
+function openWA(msg){window.open("https://wa.me/"+WA_NUM+"?text="+encodeURIComponent(msg),"_blank","noopener");}
+function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"});document.getElementById("mobMenu").style.display="none";}
 function toggleMenu(){const m=document.getElementById("mobMenu");m.style.display=m.style.display==="block"?"none":"block";}
 function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),3000);}
 
@@ -522,22 +450,37 @@ window.addEventListener("scroll",()=>{
 });
 
 // Ticker
-const TICKER_ITEMS=["Business Websites","Landing Pages","E-commerce","SEO Optimization","Website Redesign","Mobile-First Design","Performance","WordPress","Maintenance & Support","Modern Web Tech"];
+const TICKER_ITEMS=["Business Websites","Landing Pages","SEO Optimization","Website Redesign","Mobile-First Design","Performance","WordPress","Maintenance & Support","Modern Web Tech","Portfolio Sites"];
 const tt=document.getElementById("tickerTrack");
 const joined=[...TICKER_ITEMS,...TICKER_ITEMS].map(t=>`<div class="ticker-item"><span>✦</span>${t}</div>`).join('');
 tt.innerHTML=joined+joined;
 
-// Services
+// Services (no E-commerce)
+const SERVICES=[
+  {icon:"🌐",title:"Business Websites",desc:"Professional, fast-loading websites that represent your brand and convert visitors into customers.",tag:"Most Popular"},
+  {icon:"📄",title:"Landing Pages",desc:"High-converting single pages designed to capture leads and drive targeted campaign results.",tag:""},
+  {icon:"🎨",title:"Website Redesign",desc:"Transform your outdated site into a modern, polished experience that reflects your brand today.",tag:""},
+  {icon:"📱",title:"Portfolio Websites",desc:"Stunning portfolio sites that showcase your work and make lasting impressions on potential clients.",tag:""},
+  {icon:"📈",title:"SEO Optimization",desc:"On-page SEO best practices baked into every website we build, so you rank from day one.",tag:""},
+  {icon:"🔧",title:"Maintenance & Support",desc:"Reliable ongoing support, updates, and monitoring so your website stays peak-ready always.",tag:""},
+];
 const sg=document.getElementById("servicesGrid");
 SERVICES.forEach((s,i)=>{
-  sg.innerHTML+=`<div class="service-card fade-in" style="transition-delay:${i*.08}s">
-    <div class="service-icon">${s.icon}</div>
-    <h3>${s.title}</h3><p>${s.desc}</p>
-    ${s.tag?`<div class="service-tag">${s.tag}</div>`:''}
-  </div>`;
+  const card=document.createElement("div");
+  card.className="service-card fade-in";
+  card.style.transitionDelay=`${i*.08}s`;
+  card.innerHTML=`<div class="service-icon">${s.icon}</div><h3>${s.title}</h3><p>${s.desc}</p>${s.tag?`<div class="service-tag">${s.tag}</div>`:''}`;
+  card.onclick=()=>openWA(`Hi! I'm interested in your ${s.title} service.`);
+  sg.appendChild(card);
 });
 
 // Process
+const PROCESS=[
+  {icon:"🔍",title:"Discovery",desc:"We learn about your business, goals, and audience to build a solid strategic foundation."},
+  {icon:"🎨",title:"Design",desc:"Wireframes and polished UI designs crafted for impact, clarity, and your brand identity."},
+  {icon:"⚙️",title:"Development",desc:"Clean, performant code built with modern technologies and mobile-first best practices."},
+  {icon:"🚀",title:"Launch & Support",desc:"Seamless deployment followed by testing, handover, and ongoing support."},
+];
 const ps=document.getElementById("processSteps");
 PROCESS.forEach((p,i)=>{
   ps.innerHTML+=`<div class="process-step fade-in" style="transition-delay:${i*.1}s">
@@ -549,36 +492,57 @@ PROCESS.forEach((p,i)=>{
   </div>`;
 });
 
-// Pricing
-const pg2=document.getElementById("pricingGrid");
+// Pricing (no E-commerce)
+const PRICING=[
+  {name:"Starter",price:"24,999",desc:"Perfect for small businesses and personal brands.",features:["5-page website","Mobile responsive","Basic SEO setup","1 month support","Contact form","Google Analytics"],off:["Custom animations","Priority support"]},
+  {name:"Growth",price:"59,999",desc:"Ideal for growing businesses ready to scale.",features:["10-page website","Mobile responsive","Full SEO setup","3 months support","Custom animations","CMS integration","Performance optimization"],off:["Priority support"],popular:true},
+  {name:"Enterprise",price:"Custom",desc:"Full-scale solutions for ambitious brands.",features:["Unlimited pages","Mobile responsive","Advanced SEO","6 months support","Custom animations","Priority support","Dedicated account manager"],off:[]},
+];
+const pg=document.getElementById("pricingGrid");
 PRICING.forEach((p,i)=>{
   const feats=p.features.map(f=>`<li>${f}</li>`).join('');
   const offs=p.off.map(f=>`<li class="off">${f}</li>`).join('');
-  pg2.innerHTML+=`<div class="pricing-card${p.popular?' popular':''} fade-in" style="transition-delay:${i*.1}s">
-    ${p.popular?'<div class="popular-badge">⭐ Most Popular</div>':''}
+  const waMsg=p.price==="Custom"?`Hi! I'm interested in the Enterprise plan. Let's discuss a custom quote.`:`Hi! I'm interested in the ${p.name} plan (₹${p.price}). Can we get started?`;
+  const card=document.createElement("div");
+  card.className=`pricing-card${p.popular?' popular':''} fade-in`;
+  card.style.transitionDelay=`${i*.1}s`;
+  card.innerHTML=`${p.popular?'<div class="popular-badge">⭐ Most Popular</div>':''}
     <div class="plan-name">${p.name}</div>
     <div class="plan-price">${p.price==='Custom'?'Custom':'<sup>₹</sup>'+p.price+'<span>/project</span>'}</div>
     <div class="plan-desc">${p.desc}</div>
     <ul class="plan-features">${feats}${offs}</ul>
-    <button class="btn-plan" onclick="scrollTo('contact')">Get Started</button>
-  </div>`;
+    <button class="btn-plan" onclick="openWA('${waMsg.replace(/'/g,"\\'")}')">Get Started →</button>`;
+  pg.appendChild(card);
 });
 
-// Testimonials
-const tg=document.getElementById("testimonialsGrid");
-TESTIMONIALS.forEach((t,i)=>{
-  tg.innerHTML+=`<div class="test-card fade-in" style="transition-delay:${i*.1}s">
-    <div class="test-quote">"</div>
-    <p>${t.review}</p>
-    <div class="test-author">
-      <img src="${t.img}" alt="${t.name}"/>
-      <div><div class="test-name">${t.name}</div><div class="test-company">${t.company}</div></div>
-      <div class="test-stars">★★★★★</div>
+// Reviews (Gym at Your Home CEO added)
+const REVIEWS=[
+  {name:"Arjun Menon",company:"CEO, Gym at Your Home",avatar:"💪",review:"Nexigen Studios built our fitness platform exactly as we envisioned. Clean, fast, and professional — our online enquiries tripled within the first month of launch. Absolutely brilliant team!"},
+  {name:"Priya Nair",company:"MediCare Solutions",avatar:"👩‍⚕️",review:"Working with Nexigen felt like having an in-house team. They understood our vision instantly and executed it flawlessly. The site looks stunning and performs even better."},
+  {name:"James Okonkwo",company:"Lumina Retail",avatar:"🛍️",review:"Our enquiries doubled within weeks of launching the new site. Nexigen's attention to detail and design thinking is unmatched. Best investment we made this year."},
+];
+const rg=document.getElementById("reviewsGrid");
+REVIEWS.forEach((r,i)=>{
+  rg.innerHTML+=`<div class="review-card fade-in" style="transition-delay:${i*.1}s">
+    <div class="review-quote">"</div>
+    <p>${r.review}</p>
+    <div class="review-author">
+      <div class="review-avatar">${r.avatar}</div>
+      <div><div class="review-name">${r.name}</div><div class="review-company">${r.company}</div></div>
+      <div class="review-stars">★★★★★</div>
     </div>
   </div>`;
 });
 
 // FAQ
+const FAQS=[
+  {q:"How long does a website project take?",a:"Most projects take between 2 to 6 weeks depending on complexity. A simple landing page can be ready in under 2 weeks, while a full multi-page build may take 4–6 weeks. We always give you a clear timeline upfront."},
+  {q:"Do you work with clients outside Kerala?",a:"Absolutely! We work with clients across India and internationally. Most of our collaboration happens remotely via video calls, email, and shared project management tools."},
+  {q:"Will my website be mobile-friendly?",a:"Yes — every website we deliver is fully responsive and tested across all major devices and browsers. Mobile performance is always a top priority."},
+  {q:"Can I update the website myself after launch?",a:"Yes. We build on easy-to-use CMS platforms when needed, and we provide a handover walkthrough so you can manage content confidently without any coding knowledge."},
+  {q:"What happens after the website goes live?",a:"We offer post-launch support plans (1–6 months depending on your package) covering bug fixes, minor updates, and performance monitoring."},
+  {q:"Do you offer payment in instalments?",a:"Yes! We typically work with a 50% deposit to begin, and the remaining 50% on delivery. For larger projects we can arrange milestone-based payment schedules."},
+];
 const fl=document.getElementById("faqList");
 FAQS.forEach((f,i)=>{
   const item=document.createElement("div");
@@ -590,16 +554,21 @@ FAQS.forEach((f,i)=>{
 });
 function toggleFaq(el){const item=el.parentElement;const isOpen=item.classList.contains("open");document.querySelectorAll(".faq-item").forEach(x=>x.classList.remove("open"));if(!isOpen)item.classList.add("open");}
 
-// Contact form
+// Contact form → WhatsApp
 function sendForm(){
   const n=document.getElementById("fname").value.trim();
+  const ph=document.getElementById("fphone").value.trim();
   const e=document.getElementById("femail").value.trim();
+  const svc=document.getElementById("fservice").value;
+  const bud=document.getElementById("fbudget").value;
   const m=document.getElementById("fmsg").value.trim();
-  if(!n||!e||!m){showToast("Please fill all required fields.");return;}
-  const msg=document.getElementById("successMsg");
-  msg.classList.add("show");
-  ["fname","femail","fservice","fbudget","fmsg"].forEach(id=>document.getElementById(id).value="");
-  setTimeout(()=>msg.classList.remove("show"),5000);
+  if(!n||!ph||!m){showToast("Please fill Name, Phone & Message.");return;}
+  let msg=`Hi Nexigen Studios! 👋\n\n*New Enquiry*\n\n*Name:* ${n}\n*Phone:* ${ph}`;
+  if(e) msg+=`\n*Email:* ${e}`;
+  if(svc) msg+=`\n*Service:* ${svc}`;
+  if(bud) msg+=`\n*Budget:* ${bud}`;
+  msg+=`\n*Message:* ${m}`;
+  openWA(msg);
 }
 
 function subscribeNewsletter(){
@@ -610,27 +579,24 @@ function subscribeNewsletter(){
 }
 
 // Intersection observer
-function observeFadeIns(){
-  const obs=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible");});
-  },{threshold:.12});
-  document.querySelectorAll(".fade-in").forEach(el=>obs.observe(el));
-}
-observeFadeIns();
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible");});
+},{threshold:.12});
+document.querySelectorAll(".fade-in").forEach(el=>obs.observe(el));
 
-// WhatsApp float
+// WhatsApp float button
 const wa=document.createElement("a");
-wa.href="https://wa.me/918921026848?text=Hi%20Nexigen%20Studios!%20I%27d%20like%20to%20discuss%20a%20project.";
+wa.href="https://wa.me/"+WA_NUM+"?text="+encodeURIComponent("Hi Nexigen Studios! I'd like to discuss a project.");
 wa.target="_blank";wa.rel="noopener noreferrer";
 wa.innerHTML=`<svg viewBox="0 0 32 32" width="28" height="28" fill="white"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.74.7 5.31 1.93 7.55L.5 31.5l8.18-1.91A15.45 15.45 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.3a13.72 13.72 0 01-7.01-1.92l-.5-.3-5.17 1.21 1.24-5.03-.33-.52A13.72 13.72 0 012.2 16C2.2 8.38 8.38 2.2 16 2.2S29.8 8.38 29.8 16 23.62 28.8 16 28.8zm7.52-10.27c-.41-.21-2.44-1.2-2.82-1.34-.38-.13-.65-.2-.93.21-.27.41-1.07 1.34-1.31 1.62-.24.27-.48.3-.9.1-.41-.21-1.74-.64-3.32-2.04-1.23-1.09-2.06-2.44-2.3-2.85-.24-.41-.03-.63.18-.84.19-.18.41-.48.62-.72.2-.24.27-.41.41-.69.14-.27.07-.51-.03-.72-.1-.21-.93-2.24-1.27-3.07-.34-.8-.68-.69-.93-.7h-.79c-.27 0-.72.1-1.1.51-.38.41-1.44 1.41-1.44 3.44s1.48 3.99 1.68 4.27c.21.27 2.9 4.43 7.03 6.21.98.42 1.75.67 2.34.86.98.31 1.88.27 2.58.16.79-.12 2.44-.99 2.78-1.96.34-.96.34-1.79.24-1.96-.1-.17-.37-.27-.79-.48z"/></svg>`;
-wa.style.cssText="position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s;text-decoration:none;";
+wa.style.cssText="position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:transform .2s;text-decoration:none;";
 wa.onmouseenter=()=>{wa.style.transform="scale(1.1)";};
 wa.onmouseleave=()=>{wa.style.transform="scale(1)";};
 const ring=document.createElement("span");
 ring.style.cssText="position:absolute;inset:-6px;border-radius:50%;border:3px solid #25D366;animation:waPulse 2s ease-out infinite;pointer-events:none;";
-const style=document.createElement("style");
-style.textContent="@keyframes waPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}";
-document.head.appendChild(style);
+const s2=document.createElement("style");
+s2.textContent="@keyframes waPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}";
+document.head.appendChild(s2);
 wa.appendChild(ring);
 document.body.appendChild(wa);
 </script>
