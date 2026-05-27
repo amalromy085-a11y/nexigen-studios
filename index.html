@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Nexvora Studios</title>
+<title>Nexigen Studios</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -12,6 +12,8 @@ body{font-family:'Inter','Poppins',sans-serif;color:#111;background:#fff;overflo
 button{font-family:inherit}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes waPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+@keyframes tickerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
@@ -19,7 +21,7 @@ button{font-family:inherit}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .3s ease;padding:0 6%}
 nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-shadow:0 1px 20px rgba(0,0,0,.08)}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
-.logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px}
+.logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px;cursor:pointer}
 .logo span.blue{color:#2563EB}.logo span.gray{color:#888;font-weight:500;font-size:14px;margin-left:4px}
 .desk-nav{display:flex;gap:32px;align-items:center}
 .desk-nav button{background:none;border:none;font-size:14px;font-weight:500;color:#444;cursor:pointer;padding:4px 0;transition:color .2s}
@@ -44,15 +46,12 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .btn-primary:hover{background:#2563EB;transform:translateY(-2px)}
 .btn-secondary{background:transparent;color:#111;border:2px solid #e0e0e0;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s}
 .btn-secondary:hover{border-color:#2563EB;color:#2563EB}
-.hero-stats{display:flex;gap:32px;margin-top:48px;flex-wrap:wrap}
-.hero-stats div{} .stat-val{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;color:#111}
-.stat-lbl{font-size:13px;color:#888}
 .hero-visual{flex:1 1 340px;position:relative;animation:fadeIn 1s ease .3s both}
 .browser-card{background:#fff;border-radius:20px;box-shadow:0 24px 80px rgba(37,99,235,.12),0 8px 32px rgba(0,0,0,.08);overflow:hidden;border:1px solid #f0f0f0}
 .browser-bar{background:#f8f9fa;padding:12px 16px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #f0f0f0}
 .dot{width:12px;height:12px;border-radius:50%}
 .url-bar{flex:1;background:#e9ecef;border-radius:4px;height:22px;margin:0 8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#888}
-.browser-card img{width:100%;display:block;height:280px;object-fit:cover}
+.browser-card img{width:100%;display:block;height:220px;object-fit:cover}
 .browser-stats{padding:20px}
 .browser-metrics{display:flex;justify-content:space-between;margin-bottom:12px}
 .metric{text-align:center}
@@ -66,6 +65,13 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .badge-launch-lbl{font-size:12px;color:#999}
 .badge-launch-val{font-weight:700;font-size:14px}
 
+/* TICKER */
+.ticker-wrap{background:#0a0a0a;padding:14px 0;overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;animation:tickerMove 30s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{color:#888;font-size:13px;font-weight:500;padding:0 32px;display:flex;align-items:center;gap:10px}
+.ticker-item span{color:#2563EB}
+
 /* SECTIONS COMMON */
 .section-tag{color:#2563EB;font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
 .section-title{font-family:'Poppins',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:#0a0a0a;margin-bottom:16px}
@@ -76,49 +82,63 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 #services{padding:100px 6%;background:#f8faff}
 .services-grid{max-width:1200px;margin:0 auto}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.service-card{background:#fff;border-radius:16px;padding:32px 28px;border:1px solid #f0f0f0;cursor:pointer;transition:all .3s ease}
+.service-card{background:#fff;border-radius:16px;padding:32px 28px;border:1px solid #f0f0f0;cursor:pointer;transition:all .3s ease;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#EFF6FF,#fff);opacity:0;transition:opacity .3s}
+.service-card:hover::before{opacity:1}
 .service-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(37,99,235,.1);border-color:#dbeafe}
-.service-icon{width:52px;height:52px;background:#EFF6FF;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
-.service-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px;color:#0a0a0a}
-.service-card p{color:#666;font-size:14px;line-height:1.7}
+.service-icon{width:52px;height:52px;background:#EFF6FF;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;position:relative;z-index:1}
+.service-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px;color:#0a0a0a;position:relative;z-index:1}
+.service-card p{color:#666;font-size:14px;line-height:1.7;position:relative;z-index:1}
+.service-tag{margin-top:16px;font-size:12px;font-weight:600;color:#2563EB;background:#EFF6FF;display:inline-block;padding:4px 10px;border-radius:20px;position:relative;z-index:1}
 
-/* PORTFOLIO */
-#portfolio{padding:100px 6%;background:#fff}
-.portfolio-inner{max-width:1200px;margin:0 auto}
-.filter-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:32px}
-.filter-btn{padding:8px 18px;border-radius:20px;border:none;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;background:#f5f5f5;color:#555}
-.filter-btn.active{background:#111;color:#fff}
-.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:0}
-.portfolio-card{border-radius:16px;overflow:hidden;border:1px solid #f0f0f0;cursor:pointer;transition:all .3s}
-.portfolio-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.1)}
-.portfolio-img-wrap{position:relative;overflow:hidden;height:220px}
-.portfolio-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;display:block}
-.portfolio-card:hover .portfolio-img-wrap img{transform:scale(1.05)}
-.portfolio-overlay{position:absolute;inset:0;background:rgba(17,17,17,.7);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center}
-.portfolio-card:hover .portfolio-overlay{opacity:1}
-.portfolio-overlay span{color:#fff;font-weight:600;font-size:15px;background:#2563EB;padding:10px 22px;border-radius:8px}
-.portfolio-info{padding:18px 20px;background:#fff}
-.portfolio-cat{font-size:12px;color:#2563EB;font-weight:600;margin-bottom:4px}
-.portfolio-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:#111}
+/* PROCESS */
+#process{padding:100px 6%;background:#fff}
+.process-inner{max-width:1100px;margin:0 auto}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:40px;position:relative}
+.process-steps::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,#2563EB,#60a5fa);z-index:0}
+.process-step{text-align:center;padding:0 16px;position:relative;z-index:1}
+.step-circle{width:72px;height:72px;background:#fff;border:3px solid #2563EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 20px;box-shadow:0 4px 20px rgba(37,99,235,.15);transition:all .3s}
+.process-step:hover .step-circle{background:#2563EB;transform:scale(1.1)}
+.process-step:hover .step-circle span{filter:brightness(10)}
+.step-num-badge{position:absolute;top:-8px;right:calc(50% - 44px);background:#2563EB;color:#fff;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.process-step h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin-bottom:8px;color:#111}
+.process-step p{font-size:13px;color:#777;line-height:1.6}
 
 /* ABOUT */
 #about{padding:100px 6%;background:#f8faff}
-.about-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:80px;flex-wrap:wrap}
-.about-text{flex:1 1 400px}
+.about-inner{max-width:1100px;margin:0 auto}
 .about-text p{color:#555;font-size:16px;line-height:1.8;margin-bottom:20px}
 .about-steps{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
 .step-badge{display:flex;align-items:center;gap:6px;background:#EFF6FF;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;color:#2563EB}
 .step-num{background:#2563EB;color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px}
-.stats-grid{flex:1 1 400px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.stat-card{background:#fff;border-radius:16px;padding:28px 24px;text-align:center;border:1px solid #f0f0f0;box-shadow:0 4px 20px rgba(0,0,0,.04)}
-.stat-big{font-family:'Poppins',sans-serif;font-weight:800;font-size:36px;color:#2563EB;margin-bottom:6px}
-.stat-desc{color:#777;font-size:13px;font-weight:500}
+
+/* PRICING */
+#pricing{padding:100px 6%;background:#fff}
+.pricing-inner{max-width:1100px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.pricing-card{background:#fff;border-radius:20px;padding:36px 32px;border:2px solid #f0f0f0;transition:all .3s;position:relative}
+.pricing-card.popular{border-color:#2563EB;transform:scale(1.03)}
+.pricing-card:hover{box-shadow:0 20px 60px rgba(37,99,235,.1)}
+.popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#2563EB;color:#fff;padding:6px 18px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+.plan-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:#111;margin-bottom:8px}
+.plan-price{font-family:'Poppins',sans-serif;font-weight:800;font-size:42px;color:#0a0a0a;margin:16px 0 4px}
+.plan-price sup{font-size:22px;vertical-align:super}
+.plan-price span{font-size:16px;color:#888;font-weight:400}
+.plan-desc{color:#888;font-size:14px;margin-bottom:24px}
+.plan-features{list-style:none;margin-bottom:32px}
+.plan-features li{padding:8px 0;font-size:14px;color:#444;border-bottom:1px solid #f5f5f5;display:flex;align-items:center;gap:8px}
+.plan-features li::before{content:'✓';color:#2563EB;font-weight:700;font-size:13px}
+.plan-features li.off{color:#bbb}
+.plan-features li.off::before{content:'✕';color:#ddd}
+.btn-plan{width:100%;padding:14px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;border:2px solid #111;background:transparent;color:#111}
+.btn-plan:hover,.pricing-card.popular .btn-plan{background:#111;color:#fff}
+.pricing-card.popular .btn-plan:hover{background:#2563EB;border-color:#2563EB}
 
 /* TESTIMONIALS */
-#testimonials{padding:100px 6%;background:#fff}
+#testimonials{padding:100px 6%;background:#f8faff}
 .test-inner{max-width:1200px;margin:0 auto}
 .test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.test-card{background:#f8faff;border-radius:16px;padding:32px 28px;border:1px solid #e8f0fe;transition:all .3s}
+.test-card{background:#fff;border-radius:16px;padding:32px 28px;border:1px solid #e8f0fe;transition:all .3s}
 .test-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(37,99,235,.08)}
 .test-quote{color:#2563EB;font-size:28px;margin-bottom:16px}
 .test-card p{color:#444;font-size:15px;line-height:1.8;margin-bottom:24px}
@@ -127,6 +147,19 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .test-name{font-weight:700;font-size:14px;color:#111}
 .test-company{font-size:12px;color:#888}
 .test-stars{margin-left:auto;color:#fbbf24;font-size:14px}
+
+/* FAQ */
+#faq{padding:100px 6%;background:#fff}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-list{margin-top:40px}
+.faq-item{background:#fff;border-radius:12px;margin-bottom:12px;border:1px solid #f0f0f0;overflow:hidden;transition:box-shadow .3s}
+.faq-item.open{box-shadow:0 8px 30px rgba(37,99,235,.08)}
+.faq-q{padding:20px 24px;font-weight:600;font-size:15px;color:#111;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-icon{font-size:20px;color:#2563EB;transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:0 24px 20px;color:#666;font-size:14px;line-height:1.8}
 
 /* CONTACT */
 #contact{padding:100px 6%;background:#f8faff}
@@ -143,15 +176,21 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .contact-form{background:#fff;border-radius:20px;padding:36px;box-shadow:0 8px 40px rgba(0,0,0,.07);border:1px solid #f0f0f0}
 .success-msg{background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:12px 16px;margin-bottom:20px;color:#15803d;font-weight:600;font-size:14px;display:none}
 .success-msg.show{display:block}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-group{margin-bottom:18px}
 .form-group label{display:block;font-weight:600;font-size:13px;color:#333;margin-bottom:6px}
-.form-group input,.form-group textarea{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid #e8e8e8;font-size:14px;color:#333;outline:none;transition:border .2s;font-family:inherit}
-.form-group input:focus,.form-group textarea:focus{border-color:#2563EB}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid #e8e8e8;font-size:14px;color:#333;outline:none;transition:border .2s;font-family:inherit;background:#fff}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#2563EB}
 .form-group textarea{resize:vertical}
 .btn-send{width:100%;background:#111;color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s}
 .btn-send:hover{background:#2563EB}
 .map-wrap{margin-top:48px;border-radius:16px;overflow:hidden;border:1px solid #e8e8e8;height:260px}
 .map-wrap iframe{width:100%;height:260px;border:0;display:block}
+
+/* BACK TO TOP */
+#backTop{position:fixed;bottom:96px;right:28px;z-index:998;width:44px;height:44px;background:#111;color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:background .2s,transform .2s}
+#backTop:hover{background:#2563EB;transform:translateY(-2px)}
+#backTop.show{display:flex}
 
 /* FOOTER */
 footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
@@ -168,13 +207,20 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
 .newsletter p{color:#888;font-size:14px;margin-bottom:16px;line-height:1.6}
 .newsletter-input{display:flex;background:#1e1e1e;border-radius:10px;overflow:hidden;border:1px solid #333}
 .newsletter-input input{flex:1;background:transparent;border:none;padding:11px 14px;color:#fff;font-size:13px;outline:none}
-.newsletter-input button{background:#2563EB;color:#fff;border:none;padding:11px 16px;cursor:pointer;font-size:13px;font-weight:600}
+.newsletter-input button{background:#2563EB;color:#fff;border:none;padding:11px 16px;cursor:pointer;font-size:13px;font-weight:600;transition:background .2s}
+.newsletter-input button:hover{background:#1d4ed8}
 .footer-bottom{border-top:1px solid #1e1e1e;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .footer-bottom span{color:#666;font-size:13px}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:#111;color:#fff;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;z-index:9999;transition:transform .4s ease,opacity .4s;opacity:0;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
 @media(max-width:768px){
   .desk-nav{display:none!important}
   .mob-btn{display:block!important}
+  .form-row{grid-template-columns:1fr}
+  .process-steps::before{display:none}
 }
 </style>
 </head>
@@ -183,13 +229,14 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
-    <div class="logo"><span class="blue">Nex</span>vora<span class="gray">Studios</span></div>
+    <div class="logo" onclick="scrollTo('home')"><span class="blue">Nex</span>igen<span class="gray">Studios</span></div>
     <div class="desk-nav">
       <button onclick="scrollTo('home')">Home</button>
       <button onclick="scrollTo('services')">Services</button>
-      <button onclick="scrollTo('portfolio')">Portfolio</button>
+      <button onclick="scrollTo('process')">Process</button>
+      <button onclick="scrollTo('pricing')">Pricing</button>
       <button onclick="scrollTo('about')">About</button>
-      <button onclick="scrollTo('testimonials')">Testimonials</button>
+      <button onclick="scrollTo('faq')">FAQ</button>
       <button onclick="scrollTo('contact')">Contact</button>
       <button class="btn-cta" onclick="scrollTo('contact')">Get Started</button>
     </div>
@@ -198,9 +245,10 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   <div class="mob-menu" id="mobMenu">
     <button onclick="scrollTo('home')">Home</button>
     <button onclick="scrollTo('services')">Services</button>
-    <button onclick="scrollTo('portfolio')">Portfolio</button>
+    <button onclick="scrollTo('process')">Process</button>
+    <button onclick="scrollTo('pricing')">Pricing</button>
     <button onclick="scrollTo('about')">About</button>
-    <button onclick="scrollTo('testimonials')">Testimonials</button>
+    <button onclick="scrollTo('faq')">FAQ</button>
     <button onclick="scrollTo('contact')">Contact</button>
     <button class="btn-full" onclick="scrollTo('contact')">Get Started</button>
   </div>
@@ -210,14 +258,13 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
 <section id="home">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="badge">✦ Digital Agency of the Year 2024</div>
-      <h1>We Build Modern<br><span>Digital Experiences.</span></h1>
-      <p>Nexvora Studios helps businesses grow through websites, branding, and digital solutions that deliver real results.</p>
+      <div class="badge">✦ Kerala's Rising Digital Studio</div>
+      <h1>We Build Modern<br><span>Websites That Work.</span></h1>
+      <p>Nexigen Studios helps businesses grow through beautifully crafted websites that deliver real results — fast, modern, and built to convert.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="scrollTo('contact')">Start a Project →</button>
-        <button class="btn-secondary" onclick="scrollTo('portfolio')">View Portfolio</button>
+        <button class="btn-secondary" onclick="scrollTo('services')">Our Services</button>
       </div>
-
     </div>
     <div class="hero-visual">
       <div class="browser-card">
@@ -225,7 +272,7 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
           <div class="dot" style="background:#ff5f57"></div>
           <div class="dot" style="background:#febc2e"></div>
           <div class="dot" style="background:#28c840"></div>
-          <div class="url-bar">nexvorastudios.com</div>
+          <div class="url-bar">nexigenstudios.com</div>
         </div>
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85" alt="Dashboard"/>
         <div class="browser-stats">
@@ -238,57 +285,67 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
         </div>
       </div>
       <div class="badge-live">✓ Live Now</div>
-      <div class="badge-launch">
-        <span>🚀</span>
-        <div><div class="badge-launch-lbl">Launched in</div><div class="badge-launch-val">14 days</div></div>
-      </div>
+      <div class="badge-launch"><span>🚀</span><div><div class="badge-launch-lbl">Launched in</div><div class="badge-launch-val">14 days</div></div></div>
     </div>
   </div>
 </section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
 
 <!-- SERVICES -->
 <section id="services">
   <div class="services-grid">
     <div class="fade-in section-center">
       <div class="section-tag">What We Do</div>
-      <h2 class="section-title">Services We Offer</h2>
-      <p class="section-sub">From concept to launch, we cover every aspect of your digital presence.</p>
+      <h2 class="section-title">Website Services We Offer</h2>
+      <p class="section-sub">From concept to launch, we cover every aspect of building your perfect website.</p>
     </div>
     <div class="cards-grid" id="servicesGrid"></div>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="portfolio-inner">
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-inner">
     <div class="fade-in section-center">
-      <div class="section-tag">Our Work</div>
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-sub" style="margin-bottom:32px">A selection of work we're proud of — built with purpose, precision, and passion.</p>
-      <div class="filter-btns" id="filterBtns"></div>
+      <div class="section-tag">How We Work</div>
+      <h2 class="section-title">Our Process</h2>
+      <p class="section-sub">A proven four-step approach that turns your idea into a high-performing website.</p>
     </div>
-    <div class="portfolio-grid" id="portfolioGrid"></div>
+    <div class="process-steps" id="processSteps"></div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about-inner">
-    <div class="about-text fade-in">
-      <div class="section-tag">About Us</div>
-      <h2 class="section-title" style="line-height:1.2;max-width:none">We're a Team of Digital Craftspeople</h2>
-      <p>Founded in 2018, Nexvora Studios is a boutique digital agency specializing in creating powerful digital experiences for ambitious brands and businesses.</p>
-      <p>Our mission is simple: deliver exceptional digital work that drives real business growth — on time, on budget, and beyond expectations.</p>
-      <div class="about-steps">
+  <div class="about-inner" style="max-width:860px;margin:0 auto">
+    <div class="about-text fade-in" style="text-align:center">
+      <div class="section-tag" style="display:block;text-align:center">About Us</div>
+      <h2 class="section-title" style="line-height:1.2">We're a Team of Website Craftspeople</h2>
+      <p>Founded in 2026, Nexigen Studios is a boutique web studio based in Kollam, Kerala — specializing in creating powerful website experiences for ambitious businesses across India.</p>
+      <p>Our mission is simple: deliver exceptional websites that drive real business growth — on time, on budget, and beyond expectations.</p>
+      <div class="about-steps" style="justify-content:center;margin-top:20px">
         <div class="step-badge"><span class="step-num">1</span>Strategy</div>
         <div class="step-badge"><span class="step-num">2</span>Design</div>
         <div class="step-badge"><span class="step-num">3</span>Development</div>
         <div class="step-badge"><span class="step-num">4</span>Launch</div>
       </div>
     </div>
-    <div class="stats-grid">
-      <div class="stat-card fade-in"><div class="stat-big">99%</div><div class="stat-desc">Client Satisfaction</div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-inner">
+    <div class="fade-in section-center">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-title">Transparent Pricing</h2>
+      <p class="section-sub">No hidden fees. Pick the plan that fits your goals.</p>
     </div>
+    <div class="pricing-grid" id="pricingGrid"></div>
   </div>
 </section>
 
@@ -303,6 +360,17 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner">
+    <div class="fade-in section-center">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
@@ -314,7 +382,7 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
       <div class="contact-info fade-in">
         <h3>Get in Touch</h3>
         <p>Ready to start your project? Reach out and we'll get back to you within 24 hours.</p>
-        <div class="contact-item"><div class="contact-icon">📧</div><span>nexvorastudios@gmail.com</span></div>
+        <div class="contact-item"><div class="contact-icon">📧</div><span>nexigenstudios@gmail.com</span></div>
         <div class="contact-item"><div class="contact-icon">📞</div><span>+91 89210 26848</span></div>
         <div class="contact-item"><div class="contact-icon">📍</div><span>Kollam, Kerala, India</span></div>
         <div class="social-row">
@@ -326,8 +394,30 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
       </div>
       <div class="contact-form fade-in" style="transition-delay:.15s">
         <div class="success-msg" id="successMsg">✓ Message sent! We'll be in touch soon.</div>
-        <div class="form-group"><label>Full Name</label><input type="text" id="fname" placeholder="Your name"/></div>
-        <div class="form-group"><label>Email Address</label><input type="email" id="femail" placeholder="your@email.com"/></div>
+        <div class="form-row">
+          <div class="form-group"><label>Full Name</label><input type="text" id="fname" placeholder="Your name"/></div>
+          <div class="form-group"><label>Email Address</label><input type="email" id="femail" placeholder="your@email.com"/></div>
+        </div>
+        <div class="form-group"><label>Service Interested In</label>
+          <select id="fservice">
+            <option value="">Select a service...</option>
+            <option>Business Website</option>
+            <option>Landing Page</option>
+            <option>E-commerce Website</option>
+            <option>Portfolio Website</option>
+            <option>Website Redesign</option>
+            <option>Maintenance & Support</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Budget Range</label>
+          <select id="fbudget">
+            <option value="">Select a budget...</option>
+            <option>Under ₹25,000</option>
+            <option>₹25,000 – ₹75,000</option>
+            <option>₹75,000 – ₹2,00,000</option>
+            <option>₹2,00,000+</option>
+          </select>
+        </div>
         <div class="form-group"><label>Message</label><textarea id="fmsg" rows="4" placeholder="Tell us about your project..."></textarea></div>
         <button class="btn-send" onclick="sendForm()">Send Message →</button>
       </div>
@@ -343,8 +433,8 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo"><span class="blue">Nex</span>vora Studios</div>
-        <p>Building digital experiences that move businesses forward.</p>
+        <div class="logo"><span class="blue">Nex</span>igen Studios</div>
+        <p>Building websites that move businesses forward.</p>
         <div class="footer-social">
           <div class="s-btn">𝕏</div><div class="s-btn">in</div><div class="s-btn">f</div><div class="s-btn">▶</div>
         </div>
@@ -353,115 +443,128 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
         <h4>Quick Links</h4>
         <a onclick="scrollTo('home')">Home</a>
         <a onclick="scrollTo('services')">Services</a>
-        <a onclick="scrollTo('portfolio')">Portfolio</a>
-        <a onclick="scrollTo('about')">About</a>
+        <a onclick="scrollTo('pricing')">Pricing</a>
         <a onclick="scrollTo('contact')">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
-        <a>Web Development</a><a>UI/UX Design</a><a>Branding</a><a>SEO</a><a>E-commerce</a>
+        <a>Business Websites</a>
+        <a>Landing Pages</a>
+        <a>E-commerce</a>
+        <a>Website Redesign</a>
+        <a>Maintenance</a>
       </div>
       <div class="footer-col newsletter">
         <h4>Newsletter</h4>
         <p>Get updates on our latest work and insights.</p>
         <div class="newsletter-input">
-          <input type="email" placeholder="your@email.com"/>
-          <button>→</button>
+          <input type="email" id="nlEmail" placeholder="your@email.com"/>
+          <button onclick="subscribeNewsletter()">→</button>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Nexvora Studios. All rights reserved.</span>
+      <span>© 2026 Nexigen Studios. All rights reserved.</span>
       <span>Privacy Policy · Terms of Service</span>
     </div>
   </div>
 </footer>
 
+<!-- BACK TO TOP -->
+<button id="backTop" onclick="scrollTo('home')" title="Back to top">↑</button>
+<div class="toast" id="toast"></div>
+
 <script>
 const SERVICES=[
-  {icon:"💻",title:"Web Development",desc:"Fast, scalable, and modern websites built with cutting-edge technologies tailored to your goals."},
-  {icon:"🎨",title:"UI/UX Design",desc:"Intuitive interfaces and seamless user experiences that convert visitors into loyal customers."},
-  {icon:"✦",title:"Branding",desc:"Distinctive brand identities that communicate your values and stand out in competitive markets."},
-  {icon:"📈",title:"SEO Optimization",desc:"Data-driven strategies to boost your organic visibility and drive qualified traffic to your site."},
-  {icon:"🛒",title:"E-commerce Solutions",desc:"End-to-end online stores built for performance, security, and maximum sales conversion."},
-  {icon:"🔧",title:"Maintenance & Support",desc:"Reliable ongoing support, updates, and monitoring so your digital presence stays peak-ready."},
+  {icon:"🌐",title:"Business Websites",desc:"Professional, fast-loading websites that represent your brand and convert visitors into customers.",tag:"Most Popular"},
+  {icon:"📄",title:"Landing Pages",desc:"High-converting single pages designed to capture leads and drive targeted campaign results.",tag:""},
+  {icon:"🛒",title:"E-commerce Websites",desc:"Fully functional online stores built for performance, security, and maximum sales conversion.",tag:""},
+  {icon:"🎨",title:"Website Redesign",desc:"Transform your outdated site into a modern, polished experience that reflects your brand today.",tag:""},
+  {icon:"📈",title:"SEO Optimization",desc:"On-page SEO best practices baked into every website we build, so you rank from day one.",tag:""},
+  {icon:"🔧",title:"Maintenance & Support",desc:"Reliable ongoing support, updates, and monitoring so your website stays peak-ready always.",tag:""},
 ];
-const PORTFOLIO=[
-  {title:"FinTrack Dashboard",cat:"Web App",img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",tags:["Web App","Branding"]},
-  {title:"Lumina E-commerce",cat:"E-commerce",img:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",tags:["E-commerce","UI/UX"]},
-  {title:"Apex Corp Website",cat:"Website",img:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80",tags:["Website","Branding"]},
-  {title:"MediCare Portal",cat:"Web App",img:"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80",tags:["Web App","UI/UX"]},
-  {title:"Urban Eats App",cat:"UI/UX",img:"https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80",tags:["UI/UX","Branding"]},
-  {title:"BuildRight Platform",cat:"Website",img:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",tags:["Website","E-commerce"]},
+
+const PROCESS=[
+  {icon:"🔍",title:"Discovery",desc:"We learn about your business, goals, and audience to build a solid strategic foundation."},
+  {icon:"🎨",title:"Design",desc:"Wireframes and polished UI designs crafted for impact, clarity, and your brand identity."},
+  {icon:"⚙️",title:"Development",desc:"Clean, performant code built with modern technologies and mobile-first best practices."},
+  {icon:"🚀",title:"Launch & Support",desc:"Seamless deployment followed by testing, handover, and ongoing support."},
 ];
+
+const PRICING=[
+  {name:"Starter",price:"24,999",desc:"Perfect for small businesses and personal brands.",features:["5-page website","Mobile responsive","Basic SEO setup","1 month support","Contact form","Google Analytics"],off:["Custom animations","E-commerce","Priority support"]},
+  {name:"Growth",price:"59,999",desc:"Ideal for growing businesses ready to scale.",features:["10-page website","Mobile responsive","Full SEO setup","3 months support","Custom animations","CMS integration","Performance optimization"],off:["E-commerce","Priority support"],popular:true},
+  {name:"Enterprise",price:"Custom",desc:"Full-scale solutions for ambitious brands.",features:["Unlimited pages","Mobile responsive","Advanced SEO","6 months support","Custom animations","E-commerce store","Priority support","Dedicated account manager"],off:[]},
+];
+
 const TESTIMONIALS=[
-  {name:"Sarah Mitchell",company:"Apex Ventures",img:"https://randomuser.me/api/portraits/women/44.jpg",review:"Nexvora Studios transformed our online presence completely. The team delivered beyond expectations — professional, responsive, and genuinely talented."},
-  {name:"James Okonkwo",company:"Lumina Retail",img:"https://randomuser.me/api/portraits/men/32.jpg",review:"Our e-commerce revenue doubled within 3 months of launching the new site. Nexvora's attention to detail and UX thinking is unmatched."},
-  {name:"Priya Nair",company:"MediCare Solutions",img:"https://randomuser.me/api/portraits/women/68.jpg",review:"Working with Nexvora felt like having an in-house team. They understood our vision instantly and executed it flawlessly."},
+  {name:"Sarah Mitchell",company:"Apex Ventures",img:"https://randomuser.me/api/portraits/women/44.jpg",review:"Nexigen Studios transformed our online presence completely. The team delivered beyond expectations — professional, responsive, and genuinely talented."},
+  {name:"James Okonkwo",company:"Lumina Retail",img:"https://randomuser.me/api/portraits/men/32.jpg",review:"Our enquiries doubled within weeks of launching the new site. Nexigen's attention to detail and design thinking is unmatched."},
+  {name:"Priya Nair",company:"MediCare Solutions",img:"https://randomuser.me/api/portraits/women/68.jpg",review:"Working with Nexigen felt like having an in-house team. They understood our vision instantly and executed it flawlessly."},
 ];
-const CATS=["All","Web App","E-commerce","Website","UI/UX","Branding"];
-let activeCat="All";
 
-function scrollTo(id){
-  document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
-  document.getElementById("mobMenu").style.display="none";
-}
-function toggleMenu(){
-  const m=document.getElementById("mobMenu");
-  m.style.display=m.style.display==="block"?"none":"block";
-}
+const FAQS=[
+  {q:"How long does a website project take?",a:"Most projects take between 2 to 6 weeks depending on complexity. A simple landing page can be ready in under 2 weeks, while a full e-commerce build may take 4–8 weeks. We always give you a clear timeline upfront."},
+  {q:"Do you work with clients outside Kerala?",a:"Absolutely! We work with clients across India and internationally. Most of our collaboration happens remotely via video calls, email, and shared project management tools."},
+  {q:"Will my website be mobile-friendly?",a:"Yes — every website we deliver is fully responsive and tested across all major devices and browsers. Mobile performance is always a top priority."},
+  {q:"Can I update the website myself after launch?",a:"Yes. We build on easy-to-use CMS platforms when needed, and we provide a handover walkthrough so you can manage content confidently without any coding knowledge."},
+  {q:"What happens after the website goes live?",a:"We offer post-launch support plans (1–6 months depending on your package) covering bug fixes, minor updates, and performance monitoring."},
+  {q:"Do you offer payment in instalments?",a:"Yes! We typically work with a 50% deposit to begin, and the remaining 50% on delivery. For larger projects we can arrange milestone-based payment schedules."},
+];
 
-// Navbar scroll
+function scrollTo(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"});document.getElementById("mobMenu").style.display="none";}
+function toggleMenu(){const m=document.getElementById("mobMenu");m.style.display=m.style.display==="block"?"none":"block";}
+function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),3000);}
+
 window.addEventListener("scroll",()=>{
   document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>20);
+  document.getElementById("backTop").classList.toggle("show",window.scrollY>400);
 });
 
-// Render services
+// Ticker
+const TICKER_ITEMS=["Business Websites","Landing Pages","E-commerce","SEO Optimization","Website Redesign","Mobile-First Design","Performance","WordPress","Maintenance & Support","Modern Web Tech"];
+const tt=document.getElementById("tickerTrack");
+const joined=[...TICKER_ITEMS,...TICKER_ITEMS].map(t=>`<div class="ticker-item"><span>✦</span>${t}</div>`).join('');
+tt.innerHTML=joined+joined;
+
+// Services
 const sg=document.getElementById("servicesGrid");
 SERVICES.forEach((s,i)=>{
   sg.innerHTML+=`<div class="service-card fade-in" style="transition-delay:${i*.08}s">
     <div class="service-icon">${s.icon}</div>
-    <h3>${s.title}</h3>
-    <p>${s.desc}</p>
+    <h3>${s.title}</h3><p>${s.desc}</p>
+    ${s.tag?`<div class="service-tag">${s.tag}</div>`:''}
   </div>`;
 });
 
-// Render filter btns
-const fb=document.getElementById("filterBtns");
-CATS.forEach(c=>{
-  const b=document.createElement("button");
-  b.className="filter-btn"+(c==="All"?" active":"");
-  b.textContent=c;
-  b.onclick=()=>{
-    activeCat=c;
-    document.querySelectorAll(".filter-btn").forEach(x=>x.classList.remove("active"));
-    b.classList.add("active");
-    renderPortfolio();
-  };
-  fb.appendChild(b);
+// Process
+const ps=document.getElementById("processSteps");
+PROCESS.forEach((p,i)=>{
+  ps.innerHTML+=`<div class="process-step fade-in" style="transition-delay:${i*.1}s">
+    <div style="position:relative;display:inline-block">
+      <div class="step-circle"><span>${p.icon}</span></div>
+      <div class="step-num-badge">${i+1}</div>
+    </div>
+    <h4>${p.title}</h4><p>${p.desc}</p>
+  </div>`;
 });
 
-function renderPortfolio(){
-  const pg=document.getElementById("portfolioGrid");
-  const filtered=activeCat==="All"?PORTFOLIO:PORTFOLIO.filter(p=>p.tags.includes(activeCat));
-  pg.innerHTML="";
-  filtered.forEach((p,i)=>{
-    pg.innerHTML+=`<div class="portfolio-card fade-in" style="transition-delay:${i*.07}s">
-      <div class="portfolio-img-wrap">
-        <img src="${p.img}" alt="${p.title}"/>
-        <div class="portfolio-overlay"><span>View Project →</span></div>
-      </div>
-      <div class="portfolio-info">
-        <div class="portfolio-cat">${p.cat}</div>
-        <div class="portfolio-title">${p.title}</div>
-      </div>
-    </div>`;
-  });
-  observeFadeIns();
-}
-renderPortfolio();
+// Pricing
+const pg2=document.getElementById("pricingGrid");
+PRICING.forEach((p,i)=>{
+  const feats=p.features.map(f=>`<li>${f}</li>`).join('');
+  const offs=p.off.map(f=>`<li class="off">${f}</li>`).join('');
+  pg2.innerHTML+=`<div class="pricing-card${p.popular?' popular':''} fade-in" style="transition-delay:${i*.1}s">
+    ${p.popular?'<div class="popular-badge">⭐ Most Popular</div>':''}
+    <div class="plan-name">${p.name}</div>
+    <div class="plan-price">${p.price==='Custom'?'Custom':'<sup>₹</sup>'+p.price+'<span>/project</span>'}</div>
+    <div class="plan-desc">${p.desc}</div>
+    <ul class="plan-features">${feats}${offs}</ul>
+    <button class="btn-plan" onclick="scrollTo('contact')">Get Started</button>
+  </div>`;
+});
 
-// Render testimonials
+// Testimonials
 const tg=document.getElementById("testimonialsGrid");
 TESTIMONIALS.forEach((t,i)=>{
   tg.innerHTML+=`<div class="test-card fade-in" style="transition-delay:${i*.1}s">
@@ -475,46 +578,61 @@ TESTIMONIALS.forEach((t,i)=>{
   </div>`;
 });
 
+// FAQ
+const fl=document.getElementById("faqList");
+FAQS.forEach((f,i)=>{
+  const item=document.createElement("div");
+  item.className="faq-item fade-in";
+  item.style.transitionDelay=`${i*.07}s`;
+  item.innerHTML=`<div class="faq-q" onclick="toggleFaq(this)">${f.q}<span class="faq-icon">+</span></div>
+  <div class="faq-a"><div class="faq-a-inner">${f.a}</div></div>`;
+  fl.appendChild(item);
+});
+function toggleFaq(el){const item=el.parentElement;const isOpen=item.classList.contains("open");document.querySelectorAll(".faq-item").forEach(x=>x.classList.remove("open"));if(!isOpen)item.classList.add("open");}
+
 // Contact form
 function sendForm(){
-  const n=document.getElementById("fname").value;
-  const e=document.getElementById("femail").value;
-  const m=document.getElementById("fmsg").value;
-  if(!n||!e||!m) return;
+  const n=document.getElementById("fname").value.trim();
+  const e=document.getElementById("femail").value.trim();
+  const m=document.getElementById("fmsg").value.trim();
+  if(!n||!e||!m){showToast("Please fill all required fields.");return;}
   const msg=document.getElementById("successMsg");
   msg.classList.add("show");
-  document.getElementById("fname").value="";
-  document.getElementById("femail").value="";
-  document.getElementById("fmsg").value="";
-  setTimeout(()=>msg.classList.remove("show"),4000);
+  ["fname","femail","fservice","fbudget","fmsg"].forEach(id=>document.getElementById(id).value="");
+  setTimeout(()=>msg.classList.remove("show"),5000);
 }
 
-// Intersection observer for fade-ins
+function subscribeNewsletter(){
+  const v=document.getElementById("nlEmail").value.trim();
+  if(!v||!v.includes("@")){showToast("Enter a valid email.");return;}
+  document.getElementById("nlEmail").value="";
+  showToast("🎉 Subscribed! Welcome aboard.");
+}
+
+// Intersection observer
 function observeFadeIns(){
   const obs=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")});
-  },{threshold:.15});
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible");});
+  },{threshold:.12});
   document.querySelectorAll(".fade-in").forEach(el=>obs.observe(el));
 }
 observeFadeIns();
 
 // WhatsApp float
 const wa=document.createElement("a");
-wa.href="https://wa.me/918921026848?text=Hi%20Nexvora%20Studios!%20I%27d%20like%20to%20discuss%20a%20project.";
-wa.target="_blank";
-wa.rel="noopener noreferrer";
+wa.href="https://wa.me/918921026848?text=Hi%20Nexigen%20Studios!%20I%27d%20like%20to%20discuss%20a%20project.";
+wa.target="_blank";wa.rel="noopener noreferrer";
 wa.innerHTML=`<svg viewBox="0 0 32 32" width="28" height="28" fill="white"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.74.7 5.31 1.93 7.55L.5 31.5l8.18-1.91A15.45 15.45 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.3a13.72 13.72 0 01-7.01-1.92l-.5-.3-5.17 1.21 1.24-5.03-.33-.52A13.72 13.72 0 012.2 16C2.2 8.38 8.38 2.2 16 2.2S29.8 8.38 29.8 16 23.62 28.8 16 28.8zm7.52-10.27c-.41-.21-2.44-1.2-2.82-1.34-.38-.13-.65-.2-.93.21-.27.41-1.07 1.34-1.31 1.62-.24.27-.48.3-.9.1-.41-.21-1.74-.64-3.32-2.04-1.23-1.09-2.06-2.44-2.3-2.85-.24-.41-.03-.63.18-.84.19-.18.41-.48.62-.72.2-.24.27-.41.41-.69.14-.27.07-.51-.03-.72-.1-.21-.93-2.24-1.27-3.07-.34-.8-.68-.69-.93-.7h-.79c-.27 0-.72.1-1.1.51-.38.41-1.44 1.41-1.44 3.44s1.48 3.99 1.68 4.27c.21.27 2.9 4.43 7.03 6.21.98.42 1.75.67 2.34.86.98.31 1.88.27 2.58.16.79-.12 2.44-.99 2.78-1.96.34-.96.34-1.79.24-1.96-.1-.17-.37-.27-.79-.48z"/></svg>`;
 wa.style.cssText="position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s;text-decoration:none;";
-wa.onmouseenter=()=>{wa.style.transform="scale(1.1)";wa.style.boxShadow="0 6px 28px rgba(37,211,102,.6)";};
-wa.onmouseleave=()=>{wa.style.transform="scale(1)";wa.style.boxShadow="0 4px 20px rgba(37,211,102,.45)";};
-// pulse ring
+wa.onmouseenter=()=>{wa.style.transform="scale(1.1)";};
+wa.onmouseleave=()=>{wa.style.transform="scale(1)";};
 const ring=document.createElement("span");
 ring.style.cssText="position:absolute;inset:-6px;border-radius:50%;border:3px solid #25D366;animation:waPulse 2s ease-out infinite;pointer-events:none;";
+const style=document.createElement("style");
+style.textContent="@keyframes waPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}";
+document.head.appendChild(style);
 wa.appendChild(ring);
 document.body.appendChild(wa);
-const styleEl=document.createElement("style");
-styleEl.textContent="@keyframes waPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}";
-document.head.appendChild(styleEl);
 </script>
 </body>
 </html>
