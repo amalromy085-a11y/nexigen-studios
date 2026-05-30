@@ -118,9 +118,8 @@ nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-sha
 .btn-plan:hover,.pricing-card.popular .btn-plan{background:#111;color:#fff}
 .pricing-card.popular .btn-plan:hover{background:#2563EB;border-color:#2563EB}
 #reviews{padding:100px 6%;background:#f8faff}
-.reviews-inner{max-width:1200px;margin:0 auto}
-.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.review-card{background:#fff;border-radius:16px;padding:32px 28px;border:1px solid #e8f0fe;transition:all .3s}
+.reviews-inner{max-width:860px;margin:0 auto}
+.review-card{background:#fff;border-radius:16px;padding:40px 36px;border:1px solid #e8f0fe;transition:all .3s;max-width:640px;margin:0 auto}
 .review-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(37,99,235,.08)}
 .review-quote{color:#2563EB;font-size:28px;margin-bottom:16px}
 .review-card p{color:#444;font-size:15px;line-height:1.8;margin-bottom:24px}
@@ -238,9 +237,9 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
     <div class="hero-visual">
       <div class="browser-card">
         <div class="browser-bar">
-          <div class="dot" style="background:#ff5f57" title="Close"></div>
-          <div class="dot" style="background:#febc2e" title="Minimise"></div>
-          <div class="dot" style="background:#28c840" title="Full screen"></div>
+          <div class="dot" style="background:#ff5f57"></div>
+          <div class="dot" style="background:#febc2e"></div>
+          <div class="dot" style="background:#28c840"></div>
           <div class="url-bar">nexigenstudios.com</div>
         </div>
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85" alt="Dashboard"/>
@@ -319,7 +318,7 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
       <div class="section-tag">Reviews</div>
       <h2 class="section-title">What Our Clients Say</h2>
     </div>
-    <div class="reviews-grid" id="reviewsGrid"></div>
+    <div id="reviewsGrid"></div>
   </div>
 </section>
 
@@ -347,10 +346,10 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
         <div class="contact-item"><div class="contact-icon">📞</div><span>+91 89210 26848</span></div>
         <div class="contact-item"><div class="contact-icon">📍</div><span>Kollam, Kerala, India</span></div>
         <div class="social-row">
-          <a class="social-btn" href="https://twitter.com" target="_blank" rel="noopener" title="Twitter / X">𝕏</a>
-          <a class="social-btn" href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn">in</a>
-          <a class="social-btn" href="https://facebook.com" target="_blank" rel="noopener" title="Facebook">f</a>
-          <a class="social-btn" href="https://youtube.com" target="_blank" rel="noopener" title="YouTube">▶</a>
+          <a class="social-btn" href="https://twitter.com" target="_blank" rel="noopener">𝕏</a>
+          <a class="social-btn" href="https://linkedin.com" target="_blank" rel="noopener">in</a>
+          <a class="social-btn" href="https://facebook.com" target="_blank" rel="noopener">f</a>
+          <a class="social-btn" href="https://youtube.com" target="_blank" rel="noopener">▶</a>
         </div>
       </div>
       <div class="contact-form fade-in" style="transition-delay:.15s">
@@ -365,7 +364,6 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
             <option>Business Website</option>
             <option>Landing Page</option>
             <option>Portfolio Website</option>
-            <option>Website Redesign</option>
             <option>Maintenance &amp; Support</option>
           </select>
         </div>
@@ -374,8 +372,8 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
             <option value="">Select a budget...</option>
             <option>Under ₹5,000</option>
             <option>₹5,000 – ₹7,000</option>
-            <option>₹7,000 – ₹9,000</option>
-            <option>₹12000+</option>
+            <option>₹7,000 – ₹10,000</option>
+            <option>₹10,000+</option>
           </select>
         </div>
         <div class="form-group"><label>Message *</label><textarea id="fmsg" rows="4" placeholder="Tell us about your project..."></textarea></div>
@@ -415,7 +413,7 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
         <h4>Services</h4>
         <a onclick="goTo('services')">Business Websites</a>
         <a onclick="goTo('services')">Landing Pages</a>
-        <a onclick="goTo('services')">Website Redesign</a>
+        <a onclick="goTo('services')">Portfolio Sites</a>
         <a onclick="goTo('services')">Maintenance</a>
       </div>
       <div class="footer-col newsletter">
@@ -438,7 +436,7 @@ footer{background:#0a0a0a;color:#fff;padding:64px 6% 32px}
 <div class="toast" id="toast"></div>
 
 <script>
-const WA_NUM = "918921026848";
+const WA_NUM="918921026848";
 function openWA(msg){window.open("https://wa.me/"+WA_NUM+"?text="+encodeURIComponent(msg),"_blank","noopener");}
 function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"});document.getElementById("mobMenu").style.display="none";}
 function toggleMenu(){const m=document.getElementById("mobMenu");m.style.display=m.style.display==="block"?"none":"block";}
@@ -450,18 +448,15 @@ window.addEventListener("scroll",()=>{
 });
 
 // Ticker
-const TICKER_ITEMS=["Business Websites","Landing Pages","SEO Optimization","Website Redesign","Mobile-First Design","Performance","WordPress","Maintenance & Support","Modern Web Tech","Portfolio Sites"];
+const TICKER_ITEMS=["Business Websites","Landing Pages","Portfolio Sites","Mobile-First Design","Performance","WordPress","Maintenance & Support","Modern Web Tech"];
 const tt=document.getElementById("tickerTrack");
-const joined=[...TICKER_ITEMS,...TICKER_ITEMS].map(t=>`<div class="ticker-item"><span>✦</span>${t}</div>`).join('');
-tt.innerHTML=joined+joined;
+tt.innerHTML=[...TICKER_ITEMS,...TICKER_ITEMS,...TICKER_ITEMS,...TICKER_ITEMS].map(t=>`<div class="ticker-item"><span>✦</span>${t}</div>`).join('');
 
-// Services (no E-commerce)
+// Services (4 only — no SEO Optimization, no Website Redesign)
 const SERVICES=[
   {icon:"🌐",title:"Business Websites",desc:"Professional, fast-loading websites that represent your brand and convert visitors into customers.",tag:"Most Popular"},
   {icon:"📄",title:"Landing Pages",desc:"High-converting single pages designed to capture leads and drive targeted campaign results.",tag:""},
-  {icon:"🎨",title:"Website Redesign",desc:"Transform your outdated site into a modern, polished experience that reflects your brand today.",tag:""},
   {icon:"📱",title:"Portfolio Websites",desc:"Stunning portfolio sites that showcase your work and make lasting impressions on potential clients.",tag:""},
-  {icon:"📈",title:"SEO Optimization",desc:"On-page SEO best practices baked into every website we build, so you rank from day one.",tag:""},
   {icon:"🔧",title:"Maintenance & Support",desc:"Reliable ongoing support, updates, and monitoring so your website stays peak-ready always.",tag:""},
 ];
 const sg=document.getElementById("servicesGrid");
@@ -492,7 +487,7 @@ PROCESS.forEach((p,i)=>{
   </div>`;
 });
 
-// Pricing (no E-commerce)
+// Pricing
 const PRICING=[
   {name:"Starter",price:"4,999",desc:"Perfect for small businesses and personal brands.",features:["5-page website","Mobile responsive","Basic SEO setup","1 month support","Contact form","Google Analytics"],off:["Custom animations","Priority support"]},
   {name:"Growth",price:"6,999",desc:"Ideal for growing businesses ready to scale.",features:["10-page website","Mobile responsive","Full SEO setup","3 months support","Custom animations","CMS integration","Performance optimization"],off:["Priority support"],popular:true},
@@ -515,24 +510,17 @@ PRICING.forEach((p,i)=>{
   pg.appendChild(card);
 });
 
-// Reviews (Gym at Your Home CEO added)
-const REVIEWS=[
-  {name:"Jeevan Sunny",company:"CEO, Gym at Your Home",avatar:"💪",review:"Nexigen Studios built our fitness platform exactly as we envisioned. Clean, fast, and professional — our online enquiries tripled within the first month of launch. Absolutely brilliant team!"},
-  {name:"Priya Nair",company:"MediCare Solutions",avatar:"👩‍⚕️",review:"Working with Nexigen felt like having an in-house team. They understood our vision instantly and executed it flawlessly. The site looks stunning and performs even better."},
-  {name:"James Okonkwo",company:"Lumina Retail",avatar:"🛍️",review:"Our enquiries doubled within weeks of launching the new site. Nexigen's attention to detail and design thinking is unmatched. Best investment we made this year."},
-];
+// Single review — Gym at Your Home CEO only
 const rg=document.getElementById("reviewsGrid");
-REVIEWS.forEach((r,i)=>{
-  rg.innerHTML+=`<div class="review-card fade-in" style="transition-delay:${i*.1}s">
-    <div class="review-quote">"</div>
-    <p>${r.review}</p>
-    <div class="review-author">
-      <div class="review-avatar">${r.avatar}</div>
-      <div><div class="review-name">${r.name}</div><div class="review-company">${r.company}</div></div>
-      <div class="review-stars">★★★★★</div>
-    </div>
-  </div>`;
-});
+rg.innerHTML=`<div class="review-card fade-in">
+  <div class="review-quote">"</div>
+  <p>Nexigen Studios built our fitness platform exactly as we envisioned. Clean, fast, and professional — our online enquiries tripled within the first month of launch. Absolutely brilliant team!</p>
+  <div class="review-author">
+    <div class="review-avatar">💪</div>
+    <div><div class="review-name">Jeevan Sunny</div><div class="review-company">CEO, Gym at Your Home</div></div>
+    <div class="review-stars">★★★★★</div>
+  </div>
+</div>`;
 
 // FAQ
 const FAQS=[
@@ -554,7 +542,6 @@ FAQS.forEach((f,i)=>{
 });
 function toggleFaq(el){const item=el.parentElement;const isOpen=item.classList.contains("open");document.querySelectorAll(".faq-item").forEach(x=>x.classList.remove("open"));if(!isOpen)item.classList.add("open");}
 
-// Contact form → WhatsApp
 function sendForm(){
   const n=document.getElementById("fname").value.trim();
   const ph=document.getElementById("fphone").value.trim();
@@ -578,25 +565,22 @@ function subscribeNewsletter(){
   showToast("🎉 Subscribed! Welcome aboard.");
 }
 
-// Intersection observer
 const obs=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible");});
 },{threshold:.12});
 document.querySelectorAll(".fade-in").forEach(el=>obs.observe(el));
 
-// WhatsApp float button
+// WhatsApp float
 const wa=document.createElement("a");
 wa.href="https://wa.me/"+WA_NUM+"?text="+encodeURIComponent("Hi Nexigen Studios! I'd like to discuss a project.");
 wa.target="_blank";wa.rel="noopener noreferrer";
 wa.innerHTML=`<svg viewBox="0 0 32 32" width="28" height="28" fill="white"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.74.7 5.31 1.93 7.55L.5 31.5l8.18-1.91A15.45 15.45 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.3a13.72 13.72 0 01-7.01-1.92l-.5-.3-5.17 1.21 1.24-5.03-.33-.52A13.72 13.72 0 012.2 16C2.2 8.38 8.38 2.2 16 2.2S29.8 8.38 29.8 16 23.62 28.8 16 28.8zm7.52-10.27c-.41-.21-2.44-1.2-2.82-1.34-.38-.13-.65-.2-.93.21-.27.41-1.07 1.34-1.31 1.62-.24.27-.48.3-.9.1-.41-.21-1.74-.64-3.32-2.04-1.23-1.09-2.06-2.44-2.3-2.85-.24-.41-.03-.63.18-.84.19-.18.41-.48.62-.72.2-.24.27-.41.41-.69.14-.27.07-.51-.03-.72-.1-.21-.93-2.24-1.27-3.07-.34-.8-.68-.69-.93-.7h-.79c-.27 0-.72.1-1.1.51-.38.41-1.44 1.41-1.44 3.44s1.48 3.99 1.68 4.27c.21.27 2.9 4.43 7.03 6.21.98.42 1.75.67 2.34.86.98.31 1.88.27 2.58.16.79-.12 2.44-.99 2.78-1.96.34-.96.34-1.79.24-1.96-.1-.17-.37-.27-.79-.48z"/></svg>`;
 wa.style.cssText="position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:transform .2s;text-decoration:none;";
-wa.onmouseenter=()=>{wa.style.transform="scale(1.1)";};
-wa.onmouseleave=()=>{wa.style.transform="scale(1)";};
+wa.onmouseenter=()=>{wa.style.transform="scale(1.1)"};
+wa.onmouseleave=()=>{wa.style.transform="scale(1)"};
 const ring=document.createElement("span");
 ring.style.cssText="position:absolute;inset:-6px;border-radius:50%;border:3px solid #25D366;animation:waPulse 2s ease-out infinite;pointer-events:none;";
-const s2=document.createElement("style");
-s2.textContent="@keyframes waPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}";
-document.head.appendChild(s2);
+document.head.insertAdjacentHTML('beforeend','<style>@keyframes waPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}</style>');
 wa.appendChild(ring);
 document.body.appendChild(wa);
 </script>
