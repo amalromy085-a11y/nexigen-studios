@@ -45,7 +45,7 @@ export default function Contact() {
     <section 
       id="contact"
       style={{
-        padding: '120px 0',
+        padding: 'var(--section-padding) 0',
         width: '100%',
         backgroundColor: '#ffffff', // pure white background
         position: 'relative',
@@ -67,7 +67,7 @@ export default function Contact() {
         }}
       />
 
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 var(--container-px)', position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
@@ -107,7 +107,7 @@ export default function Contact() {
         <div 
           className="glass-panel"
           style={{
-            padding: '50px',
+            padding: 'clamp(24px, 5vw, 50px)',
             border: '1px solid rgba(255, 255, 255, 0.05)',
             boxShadow: '0 20px 50px rgba(0, 102, 255, 0.05)'
           }}
@@ -129,7 +129,7 @@ export default function Contact() {
                 {/* Inputs Grid */}
                 <div style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))',
                   gap: '30px'
                 }}>
                   {/* Name Input */}
@@ -364,17 +364,7 @@ export default function Contact() {
 
       </div>
 
-      <style>{`
-        .contact-input:focus {
-          border-bottom-color: #0066ff !important;
-          box-shadow: 0 1px 0 #0066ff;
-        }
-        @media (max-width: 576px) {
-          .glass-panel {
-            padding: 30px 20px !important;
-          }
-        }
-      `}</style>
+
     </section>
   );
 }

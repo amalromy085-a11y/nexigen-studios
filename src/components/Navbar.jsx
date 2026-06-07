@@ -159,8 +159,12 @@ export default function Navbar() {
             background: 'none',
             border: 'none',
             color: '#0f172a',
-            display: 'none', // Managed in CSS media queries, but set in style just in case
-            cursor: 'pointer'
+            display: 'none',
+            cursor: 'pointer',
+            padding: '8px',
+            borderRadius: '8px',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -234,16 +238,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      <style>{`
-        @media (max-width: 992px) {
-          .desktop-only {
-            display: none !important;
-          }
-          .mobile-only {
-            display: block !important;
-          }
-        }
-      `}</style>
+
     </>
   );
 }

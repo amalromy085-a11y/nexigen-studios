@@ -13,19 +13,19 @@
   --color-glass-hover: rgba(255, 255, 255, 0.85);
   --color-glass-border: rgba(15, 23, 42, 0.08);
   --color-glass-border-hover: rgba(0, 102, 255, 0.4);
-  
+
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Outfit', sans-serif;
-  
-  --cursor-size: 8px;
-  --cursor-ring-size: 40px;
+
+  /* Fluid section padding */
+  --section-padding: clamp(60px, 10vw, 120px);
+  --container-px: clamp(16px, 5vw, 40px);
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  user-select: none;
 }
 
 html, body {
@@ -36,53 +36,33 @@ html, body {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Native smooth scrolling fallback */
+  scroll-behavior: smooth;
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-bg);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(15, 23, 42, 0.15);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.15); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
 
 /* Lenis smooth scroll */
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overflow: clip;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overflow: clip; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 p {
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--color-text-muted);
 }
 
@@ -109,6 +89,8 @@ button, a {
   color: inherit;
   transition: all 0.3s ease;
   font-family: var(--font-sans);
+  /* Minimum touch target size */
+  min-height: 44px;
 }
 
 /* Glowing text */
@@ -128,3 +110,128 @@ button, a {
   filter: blur(40px);
 }
 
+/* ========================
+   RESPONSIVE SECTION PADDING
+======================== */
+section {
+  padding: var(--section-padding) 0;
+}
+
+/* ========================
+   RESPONSIVE CONTAINERS
+======================== */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================
+   NAVBAR RESPONSIVE
+======================== */
+@media (max-width: 992px) {
+  .desktop-only { display: none !important; }
+  .mobile-only { display: flex !important; }
+}
+
+/* ========================
+   ABOUT TIMELINE RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+  .timeline-central-line {
+    left: 16px !important;
+    transform: none !important;
+  }
+  .timeline-node {
+    left: 16px !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  .timeline-row {
+    justify-content: flex-end !important;
+    padding-left: 40px !important;
+  }
+  .timeline-card-wrapper {
+    width: 100% !important;
+  }
+  .timeline-container {
+    margin-top: 20px !important;
+    min-height: auto !important;
+  }
+}
+
+/* ========================
+   TESTIMONIALS CAROUSEL RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+  .carousel-card-wrapper {
+    max-width: 300px !important;
+    height: 340px !important;
+  }
+  .carousel-3d-container {
+    height: 380px !important;
+    perspective: 800px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-card-wrapper {
+    max-width: 260px !important;
+    height: 360px !important;
+  }
+  .carousel-3d-container {
+    height: 400px !important;
+  }
+}
+
+/* ========================
+   FOOTER RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+}
+
+/* ========================
+   CONTACT FORM RESPONSIVE
+======================== */
+.contact-input:focus {
+  border-bottom-color: #0066ff !important;
+  box-shadow: 0 1px 0 #0066ff;
+}
+
+@media (max-width: 576px) {
+  .glass-panel {
+    padding: 28px 18px !important;
+  }
+}
+
+/* ========================
+   FOOTER SOCIAL ICONS
+======================== */
+.footer-social-icon:hover {
+  background-color: #0066ff !important;
+  border-color: #0066ff !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 15px rgba(0, 102, 255, 0.4);
+}
+
+.footer-link-btn:hover {
+  color: #0066ff !important;
+  transform: translateX(4px);
+}
+
+/* ========================
+   REDUCE MOTION SUPPORT
+======================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

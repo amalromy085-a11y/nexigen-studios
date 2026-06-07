@@ -20,7 +20,7 @@ export default function Hero() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.16, 1, 0.3, 1] // Apple-style custom cubic-bezier
+        ease: [0.16, 1, 0.3, 1]
       }
     }
   };
@@ -40,16 +40,14 @@ export default function Hero() {
 
   const handleScroll = (id) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section 
+    <section
       id="hero"
       style={{
-        height: '100vh',
+        minHeight: '100svh',
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -57,12 +55,12 @@ export default function Hero() {
         alignItems: 'center',
         position: 'relative',
         textAlign: 'center',
-        padding: '0 20px',
+        padding: 'clamp(80px, 15vw, 120px) clamp(16px, 5vw, 40px) clamp(60px, 10vw, 100px)',
         overflow: 'hidden',
       }}
     >
       {/* Background soft ambient radial gradient */}
-      <div 
+      <div
         style={{
           position: 'absolute',
           top: '50%',
@@ -87,10 +85,11 @@ export default function Hero() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '24px'
+          gap: 'clamp(16px, 3vw, 28px)',
+          width: '100%',
         }}
       >
-        {/* Animated Brand Tag */}
+        {/* Brand Tag */}
         <motion.div
           variants={itemVariants}
           style={{
@@ -111,30 +110,30 @@ export default function Hero() {
             borderRadius: '50%',
             backgroundColor: '#0066ff',
             boxShadow: '0 0 8px #0066ff',
-            display: 'inline-block'
+            display: 'inline-block',
+            flexShrink: 0,
           }} />
           <span style={{
-            fontSize: '0.75rem',
+            fontSize: 'clamp(0.6rem, 2vw, 0.75rem)',
             fontFamily: 'var(--font-sans)',
             fontWeight: 600,
             textTransform: 'uppercase',
-            letterSpacing: '0.25em',
+            letterSpacing: '0.2em',
             color: 'var(--color-text-muted)'
           }}>
             Award-Winning Creative Studio
           </span>
         </motion.div>
 
-        {/* Agency Huge Title */}
+        {/* Agency Title */}
         <motion.h2
           variants={logoVariants}
           style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(1.2rem, 3.5vw, 2.2rem)',
+            fontSize: 'clamp(1rem, 3.5vw, 2.2rem)',
             fontWeight: 800,
             color: '#0f172a',
             opacity: 0.9,
-            textShadow: 'none'
           }}
         >
           NEXIGEN STUDIOS
@@ -145,22 +144,25 @@ export default function Hero() {
           variants={itemVariants}
           style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
+            fontSize: 'clamp(2rem, 8vw, 5.5rem)',
             fontWeight: 900,
             lineHeight: 1.1,
             letterSpacing: '-0.03em',
             background: 'linear-gradient(to bottom, #0f172a 60%, #475569)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
             maxWidth: '900px',
+            width: '100%',
           }}
         >
-          Transforming Ideas Into <br />
-          <span style={{ 
-            background: 'linear-gradient(to right, #0066ff, #00d9ff)', 
+          Transforming Ideas Into{' '}
+          <br className="hero-br" />
+          <span style={{
+            background: 'linear-gradient(to right, #0066ff, #00d9ff)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 30px rgba(0, 102, 255, 0.1)'
+            backgroundClip: 'text',
           }}>
             Digital Experiences
           </span>
@@ -171,11 +173,11 @@ export default function Hero() {
           variants={itemVariants}
           style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+            fontSize: 'clamp(0.9rem, 2.5vw, 1.15rem)',
             fontWeight: 400,
             color: 'var(--color-text-muted)',
-            maxWidth: '600px',
-            lineHeight: 1.6,
+            maxWidth: '580px',
+            lineHeight: 1.7,
           }}
         >
           Premium Web Solutions Built For Modern Businesses. We combine high-end design, immersive 3D technology, and code to create award-winning platforms.
@@ -186,49 +188,50 @@ export default function Hero() {
           variants={itemVariants}
           style={{
             display: 'flex',
-            gap: '20px',
-            marginTop: '15px',
+            gap: 'clamp(12px, 3vw, 20px)',
+            marginTop: '8px',
             flexWrap: 'wrap',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            width: '100%',
           }}
         >
-          {/* Primary Action Button */}
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(0, 102, 255, 0.4)' }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleScroll('services')}
             style={{
-              padding: '16px 36px',
+              padding: 'clamp(12px, 2vw, 16px) clamp(24px, 4vw, 36px)',
               backgroundColor: '#0066ff',
               color: '#ffffff',
               border: 'none',
               borderRadius: '30px',
               fontWeight: 600,
-              fontSize: '1rem',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               boxShadow: '0 0 15px rgba(0, 102, 255, 0.2)',
               display: 'flex',
               alignItems: 'center',
-              gap: '10px'
+              gap: '10px',
+              whiteSpace: 'nowrap',
             }}
           >
             Explore Services
           </motion.button>
 
-          {/* Secondary Action Button */}
           <motion.button
             whileHover={{ scale: 1.05, backgroundColor: 'rgba(15, 23, 42, 0.05)' }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleScroll('contact')}
             style={{
-              padding: '16px 36px',
+              padding: 'clamp(12px, 2vw, 16px) clamp(24px, 4vw, 36px)',
               backgroundColor: 'rgba(15, 23, 42, 0.02)',
               color: '#0f172a',
               border: '1px solid rgba(15, 23, 42, 0.1)',
               borderRadius: '30px',
               fontWeight: 600,
-              fontSize: '1rem',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               backdropFilter: 'blur(5px)',
               WebkitBackdropFilter: 'blur(5px)',
+              whiteSpace: 'nowrap',
             }}
           >
             Start Your Project
@@ -236,7 +239,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Down Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 10 }}
@@ -247,7 +250,7 @@ export default function Hero() {
         onClick={() => handleScroll('about')}
         style={{
           position: 'absolute',
-          bottom: '5vh',
+          bottom: 'clamp(20px, 5vh, 40px)',
           left: '50%',
           transform: 'translateX(-50%)',
           cursor: 'pointer',
@@ -259,12 +262,12 @@ export default function Hero() {
         }}
       >
         <span style={{
-          fontSize: '0.65rem',
+          fontSize: '0.6rem',
           textTransform: 'uppercase',
           letterSpacing: '0.2em',
           color: 'var(--color-text-muted)',
           fontWeight: 600
-        }}>Scroll Down</span>
+        }}>Scroll</span>
         <div style={{
           width: '20px',
           height: '32px',

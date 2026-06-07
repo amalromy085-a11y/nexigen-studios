@@ -200,8 +200,10 @@ export default function ThreeBackground() {
     // Responsiveness Check
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
+      const lowEnd = window.innerWidth < 480;
       setIsMobile(mobile);
-      setParticleCount(mobile ? 200 : 700);
+      // Use fewer particles on smaller/lower-end screens
+      setParticleCount(lowEnd ? 80 : mobile ? 180 : 700);
     };
     
     handleResize();
@@ -234,7 +236,8 @@ export default function ThreeBackground() {
         top: 0,
         left: 0,
         width: '100vw',
-        height: '100vh',
+        height: '100dvh',
+        minHeight: '100vh',
         zIndex: -1,
         backgroundColor: '#ffffff',
         pointerEvents: 'none',
@@ -243,7 +246,7 @@ export default function ThreeBackground() {
     >
       <Canvas
         camera={{ position: [0, 0, 8], fov: 60 }}
-        dpr={[1, 1.5]} // Limit DPR to 1.5 for retina screens to avoid GPU bottlenecks
+        dpr={isMobile ? [1, 1] : [1, 1.5]} // Cap DPR at 1 on mobile for better performance
         gl={{ alpha: false, antialias: true, powerPreference: "high-performance" }}
       >
         <color attach="background" args={['#ffffff']} />

@@ -45,7 +45,7 @@ export default function Pricing() {
     <section 
       id="pricing"
       style={{
-        padding: '120px 0',
+        padding: 'var(--section-padding) 0',
         width: '100%',
         backgroundColor: '#ffffff', // pure white background
         position: 'relative',
@@ -66,7 +66,7 @@ export default function Pricing() {
         }}
       />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--container-px)', position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
@@ -121,7 +121,7 @@ export default function Pricing() {
         <div 
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
             gap: '30px',
             alignItems: 'stretch',
             maxWidth: '1100px',
@@ -147,7 +147,7 @@ export default function Pricing() {
               <div 
                 className="glass-panel"
                 style={{
-                  padding: '45px 35px',
+                  padding: 'clamp(24px, 4vw, 45px) clamp(20px, 3vw, 35px)',
                   width: '100%',
                   display: 'flex',
                   flexDirection: 'column',

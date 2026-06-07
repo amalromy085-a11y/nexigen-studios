@@ -33,7 +33,7 @@ export default function Footer() {
       style={{
         backgroundColor: '#ffffff',
         borderTop: '1px solid rgba(15, 23, 42, 0.08)',
-        padding: '80px 0 30px 0',
+        padding: 'clamp(48px, 8vw, 80px) 0 30px 0',
         position: 'relative',
         overflow: 'hidden'
       }}
@@ -52,7 +52,7 @@ export default function Footer() {
         }}
       />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--container-px)', position: 'relative', zIndex: 1 }}>
         {/* Main Grid */}
         <div 
           style={{
@@ -225,24 +225,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <style>{`
-        .footer-social-icon:hover {
-          background-color: #0066ff !important;
-          border-color: #0066ff !important;
-          color: #ffffff !important;
-          box-shadow: 0 0 15px rgba(0, 102, 255, 0.4);
-        }
-        .footer-link-btn:hover {
-          color: #0066ff !important;
-          transform: translateX(4px);
-        }
-        @media (max-width: 768px) {
-          .footer-grid {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
-          }
-        }
-      `}</style>
+
     </footer>
   );
 }

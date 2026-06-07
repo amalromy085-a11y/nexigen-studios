@@ -36,7 +36,7 @@ export default function Testimonials() {
     <section 
       id="testimonials"
       style={{
-        padding: '120px 0',
+        padding: 'var(--section-padding) 0',
         width: '100%',
         backgroundColor: '#ffffff',
         position: 'relative',
@@ -52,7 +52,7 @@ export default function Testimonials() {
         style={{ top: '20%', left: '30%', transform: 'scale(1.2)' }}
       />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 1, width: '100%' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--container-px)', position: 'relative', zIndex: 1, width: '100%' }}>
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
@@ -259,17 +259,7 @@ export default function Testimonials() {
 
       </div>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .carousel-card-wrapper {
-            max-width: 290px !important;
-            height: 320px !important;
-          }
-          .carousel-3d-container {
-            height: 380px !important;
-          }
-        }
-      `}</style>
+
     </section>
   );
 }

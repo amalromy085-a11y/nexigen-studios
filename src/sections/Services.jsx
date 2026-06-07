@@ -217,7 +217,7 @@ export default function Services() {
     <section 
       id="services"
       style={{
-        padding: '120px 0',
+        padding: 'var(--section-padding) 0',
         width: '100%',
         backgroundColor: '#ffffff', // pure white background
         position: 'relative',
@@ -239,7 +239,7 @@ export default function Services() {
         }}
       />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--container-px)', position: 'relative', zIndex: 1 }}>
         
         {/* Section Title */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
@@ -279,7 +279,7 @@ export default function Services() {
         <div 
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))',
             gap: '30px',
             position: 'relative'
           }}
@@ -331,7 +331,7 @@ export default function Services() {
                 position: 'relative',
                 maxHeight: '90vh',
                 overflowY: 'auto',
-                padding: '40px'
+                padding: 'clamp(24px, 4vw, 40px)',
               }}
               className="glass-panel"
               onClick={(e) => e.stopPropagation()}
@@ -406,7 +406,7 @@ export default function Services() {
 
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))',
                 gap: '15px'
               }}>
                 {selectedService.features.map((feature, idx) => (

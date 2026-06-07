@@ -53,7 +53,7 @@ export default function WhyChooseUs() {
     <section 
       id="why-choose-us"
       style={{
-        padding: '120px 0',
+        padding: 'var(--section-padding) 0',
         width: '100%',
         backgroundColor: '#f8fafc', // light off-white background
         position: 'relative',
@@ -74,7 +74,7 @@ export default function WhyChooseUs() {
         }}
       />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--container-px)', position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
@@ -114,7 +114,7 @@ export default function WhyChooseUs() {
         <div 
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(260px, 100%), 1fr))',
             gap: '30px'
           }}
         >

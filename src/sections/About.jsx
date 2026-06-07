@@ -51,7 +51,7 @@ export default function About() {
       ref={containerRef}
       style={{
         position: 'relative',
-        padding: '120px 0',
+        padding: 'var(--section-padding) 0',
         width: '100%',
         overflow: 'hidden',
         backgroundColor: '#f8fafc'
@@ -67,7 +67,7 @@ export default function About() {
         style={{ bottom: '15%', right: '-10%', transform: 'scale(1.2)' }} 
       />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--container-px)', position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
@@ -104,7 +104,7 @@ export default function About() {
         </div>
 
         {/* Timeline Content */}
-        <div style={{ position: 'relative', width: '100%', minHeight: '800px', marginTop: '40px' }} className="timeline-container">
+        <div style={{ position: 'relative', width: '100%', minHeight: 'auto', marginTop: '40px' }} className="timeline-container">
           
           {/* Central Vertical Line (Timeline Path) */}
           <div 
@@ -135,7 +135,7 @@ export default function About() {
           </div>
 
           {/* Timeline Items */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(40px, 8vw, 80px)' }}>
             {timelineItems.map((item, index) => (
               <div 
                 key={index}
@@ -198,7 +198,7 @@ export default function About() {
                   <div 
                     className="glass-panel"
                     style={{
-                      padding: '40px',
+                      padding: 'clamp(20px, 4vw, 40px)',
                       position: 'relative',
                       display: 'flex',
                       flexDirection: 'column',
@@ -255,28 +255,7 @@ export default function About() {
 
       </div>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .timeline-central-line {
-            left: 20px !important;
-            transform: none !important;
-          }
-          .timeline-node {
-            left: 20px !important;
-            transform: translate(-50%, -50%) !important;
-          }
-          .timeline-row {
-            justify-content: flex-end !important;
-            padding-left: 45px !important;
-          }
-          .timeline-card-wrapper {
-            width: 100% !important;
-          }
-          .timeline-container {
-            margin-top: 20px !important;
-          }
-        }
-      `}</style>
+
     </section>
   );
 }
